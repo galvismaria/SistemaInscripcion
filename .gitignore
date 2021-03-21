@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+SistemaInscripciones.dev
+SistemaInscripciones.layout
+Makefile.win
