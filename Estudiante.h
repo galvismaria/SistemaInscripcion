@@ -1,6 +1,11 @@
 #ifndef ESTUDIANTE
 #define ESTUDIANTE
 
+#include <string>
+#include <iostream>
+
+using namespace std;
+
 class Estudiante{
 	
 	private:
@@ -10,20 +15,21 @@ class Estudiante{
 		int cedula;
 		float indice;
 		int nivel;
-		int ucAprbados;
+		int creditos;
 		bool estado;
 		
 	public:
 		
 		Estudiante();
 		~Estudiante();
-		Estudiante(string nombre, string carrera, int cedula, float indice, int nivel, int ucAprobados);
+		Estudiante(string nombre, string carrera, int cedula, float indice, int nivel, int creditos);
 		void setNombre(string nombre);
 		void setCarrera(string carrera);
 		void setIndice(float indice);
 		void setNivel(int nivel);
-		void setCreditosAprobados(int ucAprobados);
+		void setCreditos(int creditos);
 		void setEstado(bool estado);
+		float getIndice();
 	
 };
 

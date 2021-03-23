@@ -1,6 +1,8 @@
 #ifndef NODO
 #define NODO
 
+#include "Estudiante.h"
+
 class Nodo{
 	
 	private:
@@ -8,7 +10,6 @@ class Nodo{
 		Estudiante *estudiante;
 		Nodo *siguiente;
 		int posicion;
-		int prioridad;
 		
 	public:
 		
@@ -16,11 +17,13 @@ class Nodo{
 		~Nodo();
 		Nodo(Estudiante *estudiante, Nodo *siguiente, int posicion);
 		Nodo(Estudiante *estudiante, Nodo *siguiente);
+		Nodo(Estudiante *estudiante);
 		void setEstudiante(Estudiante *estudiante);
 		void setSiguiente(Nodo *siguiente);
 		void setPosicion(int posicion);
-		void setPrioridad(int prioridad);
+		Nodo* getSiguiente();
+		Estudiante* getEstudiante();
 	
-}
+};
 
 #endif

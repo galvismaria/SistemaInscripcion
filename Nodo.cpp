@@ -10,17 +10,22 @@ Nodo::~Nodo(){
 	;
 }
 
-Nodo::Nodo(Estudiante *estudiante, Nodo *siguiente, int posicion, int prioridad){
+Nodo::Nodo(Estudiante *estudiante, Nodo *siguiente, int posicion){
 	this->estudiante = estudiante;
 	this->siguiente = siguiente;
-	this.posicion = posicion;
-	this.prioridad = prioridad;
+	this->posicion = posicion;
 }
 
 Nodo::Nodo(Estudiante *estudiante, Nodo *siguiente){
 	this->estudiante = estudiante;
 	this->siguiente = siguiente;
-	this.posicion = 0;
+	this->posicion = 0;
+}
+
+Nodo::Nodo(Estudiante *estudiante){
+	this->estudiante = estudiante;
+	this->siguiente = NULL;
+	this->posicion = 0;
 }
 
 void Nodo::setEstudiante(Estudiante *estudiante){
@@ -32,9 +37,13 @@ void Nodo::setSiguiente(Nodo *siguiente){
 }
 
 void Nodo::setPosicion(int posicion){
-	this.posicion = posicion;
+	this->posicion = posicion;
 }
 
-void Nodo::setPrioridad(int prioridad){
-	this.prioridad = prioridad;
+Nodo* Nodo::getSiguiente(){
+	return siguiente;
+}
+
+Estudiante* Nodo::getEstudiante(){
+	return estudiante;
 }
