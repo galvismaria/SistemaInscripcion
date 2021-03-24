@@ -3,7 +3,20 @@
 Cola::Cola(){
 	
 	inicio = fin = NULL;
+	elementos = 0;
 	
+}
+
+Nodo* Cola::getInicio(){
+	return inicio;
+}
+
+Nodo* Cola::getFin(){
+	return fin;
+}
+
+int Cola::getElementos(){
+	return elementos;
 }
 
 bool Cola::estaVacia(){
@@ -15,59 +28,83 @@ bool Cola::estaVacia(){
 	
 }
 
-void Cola::encolar(Estudiante *estudiante){
+void Cola::encolarAtras(Estudiante *estudiante){
      
     Nodo *nuevo = new Nodo(estudiante);
     
     if( inicio == NULL){
     	inicio = nuevo;
+    	elementos++;
 	}
 	
 	else{
 		fin->setSiguiente(nuevo);
+		elementos++;
 	}
 	
 	fin = nuevo;
+	nuevo->setPosicion(elementos);
      
 }
 
-//void Cola::ordenarIndice(){
-//	
-//	Nodo *aux1, *aux2, *aux3;
-//	
-//	aux1 = inicio;
-//	
-//	while ( aux1->getSiguiente() ){
-//		
-//		aux2 = aux1->getSiguiente();
-//		
-//		while ( aux2 ){
-//			
-//			if ( aux1->getEstudiante()->getIndice() > aux2->getEstudiante()->getIndice() ){
-//				
-//				aux3 = aux1;
-//				
-//				aux1 = aux2;
-//				
-//				aux2 = aux3;
-//				
-//			}
-//			
-//			aux2 = aux2->getSiguiente();
-//			
-//		}
-//		
-//		aux1 = aux1->getSiguiente();
-//		
-//	}
-//	
-//}
+void Cola::encolarAdelante(Estudiante *estudiante){
+	
+	if ( inicio ){
+		
+		inicio = new Nodo ( estudiante, inicio );
+	}
+	
+}
+
+void Cola::encolarLuegoDe(Estudiante *estudiante, Nodo *lugar){
+	
+	Nodo *temp = inicio;
+	
+	if ( !lugar->getSiguiente() ){
+		
+		encolarAtras(estudiante);
+		
+	}
+	
+	else{
+		
+		while ( temp->getSiguiente() && temp->getSiguiente() != lugar){
+		
+			temp = temp->getSiguiente();
+		
+		}
+	
+	temp->setSiguiente( new Nodo(estudiante, temp->getSiguiente() ) );
+		
+	}
+
+}
+
+Estudiante* Cola::desencolar(){
+	
+	Nodo* nAux;
+	Estudiante* aux;
+	
+	nAux = inicio;
+	
+	if ( !nAux )
+		return NULL;
+		
+	inicio = nAux->getSiguiente();
+	aux = nAux->getEstudiante();
+	delete nAux;
+	
+	if ( !inicio )
+		fin = NULL;
+		
+	return aux;
+}
 
 void Cola::encolarPorIndice( Estudiante *estudiante ){
 	
 	Nodo* temp;
 
-    if (estaVacia() || inicio->getEstudiante()->getIndice() < estudiante->getIndice() ){
+    if (estaVacia() || inicio->getEstudiante() < estudiante ){
 
         inicio = new Nodo ( estudiante, inicio );
         
@@ -75,7 +112,7 @@ void Cola::encolarPorIndice( Estudiante *estudiante ){
 
         temp = inicio;
         
-        while (temp->getSiguiente() && temp->getSiguiente()->getEstudiante()->getIndice() >= estudiante->getIndice() ){
+        while (temp->getSiguiente() && ( estudiante < temp->getSiguiente()->getEstudiante() ) ){
             temp = temp->getSiguiente();
         }
         
@@ -118,7 +155,9 @@ void Cola::encolarPorCreditos( Estudiante *estudiante ){
         temp = inicio;
         
         while (temp->getSiguiente() && temp->getSiguiente()->getEstudiante()->getCreditos() >= estudiante->getCreditos() ){
+        	
             temp = temp->getSiguiente();
+            
         }
         
         temp->setSiguiente( new Nodo(estudiante, temp->getSiguiente() ) );
@@ -126,7 +165,54 @@ void Cola::encolarPorCreditos( Estudiante *estudiante ){
 	
 }
 
+void Cola::ordenarPrioridad( int caso ){
+	
+	Nodo *actual, *next, *aux;
+	aux = new Nodo();
+	
+	actual = inicio;
+	
+	while ( actual->getSiguiente() ){
+		
+		next = actual->getSiguiente();
+		
+		while ( next ){
+			
+			if ( next->getEstudiante()->tienePrioridad( actual->getEstudiante(), caso ) ){
+				
+				aux->setEstudiante( next->getEstudiante() );
+				next->setEstudiante( actual->getEstudiante() );
+				actual->setEstudiante( aux->getEstudiante() );
+				
+			}
+			
+			next = next->getSiguiente();
+			
+		}
+		
+		actual = actual->getSiguiente();
+		
+	}
+	
+}
 
+
+void Cola::asignarPosiciones(){
+	
+	Nodo *aux;
+	
+	aux = inicio;
+	elementos = 0;
+	
+	while ( aux ){
+		
+		elementos++;
+		aux->setPosicion(elementos);
+		aux = aux->getSiguiente();
+		
+	}
+	
+}
 
 void Cola::imprimir(){
 	
@@ -136,7 +222,7 @@ void Cola::imprimir(){
 	
 	while ( aux ){
 		
-		cout << " -> " << aux->getEstudiante()->getIndice();
+		cout << " -> " << aux->getEstudiante()->getNombre() << " (" << aux->getPosicion() << ") ";
 		aux = aux->getSiguiente();
 		
 	}

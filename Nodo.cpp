@@ -47,3 +47,9 @@ Nodo* Nodo::getSiguiente(){
 Estudiante* Nodo::getEstudiante(){
 	return estudiante;
 }
+
+int Nodo::getPosicion(){
+	return posicion;
+}
+
+

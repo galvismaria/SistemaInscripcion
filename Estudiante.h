@@ -29,7 +29,13 @@ class Estudiante{
 		void setNivel(int nivel);
 		void setCreditos(int creditos);
 		void setEstado(bool estado);
+		string getNombre();
 		float getIndice();
+		int getNivel();
+		int getCreditos();
+		bool operator <(const Estudiante &estudiante);
+		bool tienePrioridad(Estudiante *estudiante, int caso);
+		
 	
 };
 

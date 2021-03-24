@@ -6,7 +6,7 @@ Estudiante::Estudiante(){
 	cedula = 0;
 	indice = 0;
 	nivel = 0;
-	ucAprobados = 0;
+	creditos = 0;
 }
 
 Estudiante::~Estudiante(){
@@ -46,6 +46,59 @@ void Estudiante::setEstado(bool estado){
 	this->estado = estado;
 }
 
+string Estudiante::getNombre(){
+	return nombre;
+}
+
 float Estudiante::getIndice(){
 	return indice;
 }
+
+int Estudiante::getNivel(){
+	return nivel;
+}
+
+int Estudiante::getCreditos(){
+	return creditos;
+}
+
+//bool Estudiante::operator <(const Estudiante &estudiante){
+//	
+//	return ( ( this->indice < estudiante.indice) || ( ( this->indice == estudiante.indice ) && ( this->nivel <= estudiante.nivel) ) );
+//	
+//}
+
+bool Estudiante::tienePrioridad(Estudiante *estudiante, int caso){
+	
+	switch(caso){
+		
+		case 1:
+			if ( this->indice > estudiante->indice )
+				return true;
+			else if ( ( this->indice == estudiante->indice ) && ( this->nivel >= estudiante->nivel ) )
+				return true;
+			else
+				return false;
+		
+		case 2:
+			if ( this->nivel > estudiante->nivel )
+				return true;
+			else if ( ( this->nivel == estudiante->nivel ) && ( this->indice >= estudiante->indice ) )
+				return true;
+			else
+				return false;
+		
+		case 3:
+			if ( this->creditos > estudiante->creditos )
+				return true;
+			else if ( ( this->creditos == estudiante->creditos ) && ( this->indice >= estudiante->indice ) )
+				return true;
+			else
+				return false;
+				
+		default:
+			return false;
+		
+	}
+	
+} 

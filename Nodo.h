@@ -23,6 +23,7 @@ class Nodo{
 		void setPosicion(int posicion);
 		Nodo* getSiguiente();
 		Estudiante* getEstudiante();
+		int getPosicion();
 	
 };
 
