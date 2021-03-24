@@ -3,6 +3,7 @@
 
 #include "Nodo.h"
 #include "Estudiante.h"
+#include "Global.h"
 
 class Cola{
 	
@@ -19,15 +20,13 @@ class Cola{
 		Nodo *getFin();
 		int getElementos();
 		bool estaVacia();
-		void encolarAtras(Estudiante *estudiante);
+		void encolar(Estudiante *estudiante);
 		void encolarAdelante(Estudiante *estudiante);
 		void encolarLuegoDe(Estudiante *estudiante, Nodo *lugar);
 		Estudiante* desencolar();
-		void encolarPorIndice(Estudiante *estudiante);
-		void encolarPorNivel(Estudiante *estudiante);
-		void encolarPorCreditos(Estudiante *estudiante);
 		void asignarPosiciones();
 		void ordenarPrioridad(int caso);
+		void actualizarEstadoInscripcion(bool estado);
 		void imprimir();
 		
 };

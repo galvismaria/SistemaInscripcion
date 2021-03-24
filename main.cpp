@@ -1,5 +1,6 @@
 #include "Cola.h"
 #include "Curso.h"
+#include "Global.h"
 
 int main(){
 	
@@ -10,17 +11,29 @@ int main(){
 	Estudiante *est5 = new Estudiante("Ala", "Ing",   12345, 7,  3, 20);
 	Cola *cola = new Cola();
 	
-	cola->encolarAtras(est1);
-	cola->encolarAtras(est2);
-	cola->encolarAtras(est3);
-	cola->encolarAtras(est4);
-	cola->encolarAtras(est5);
+	cola->encolar(est1);
+	cola->encolar(est2);
+	cola->encolar(est3);
+	cola->encolar(est4);
+	cola->encolar(est5);
+	
+	Curso *curso = new Curso("Matematicas", 1, 3);
+	Curso *otroCurso = new Curso("Informatica", 2, 2);
+	
+	curso->generarListaAsignados(cola, 1);
+	
+	cola->encolar(est1);
+	cola->encolar(est2);
+	cola->encolar(est3);
+	cola->encolar(est4);
+	cola->encolar(est5);
+	
+	otroCurso->generarListaAsignados(cola, 2);
 	
 	
-	cola->ordenarPrioridad(3);
-	cola->asignarPosiciones();
-	
-	//cola->ordenarNivel();
-	
-	cola->imprimir();
+	curso->mostrarListaAsignados();
+	curso->mostrarListaEspera();
+	otroCurso->mostrarListaAsignados();
+	otroCurso->mostrarListaEspera();
+	est5->mostrarMaterias();
 }

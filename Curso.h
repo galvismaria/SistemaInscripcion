@@ -1,11 +1,8 @@
 #ifndef CURSO
 #define CURSO
 
-#include <string>
-#include <iostream>
-
 #include "Cola.h"
-#include "Estudiante.h"
+#include "Global.h"
 
 using namespace std;
 
@@ -23,6 +20,10 @@ class Curso{
 		
 		Curso();
 		Curso(string nombre, int id, int cupos);
+		void generarListaAsignados(Cola *candidatos, int caso);
+		void asignarMaterias();
+		void mostrarListaAsignados();
+		void mostrarListaEspera();
 
 	
 };
