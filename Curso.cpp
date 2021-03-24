@@ -20,6 +20,12 @@ Curso::Curso(string nombre, int id, int cupos){
 	
 }
 
+string Curso::getNombre(){
+	
+	return nombre;
+	
+}
+
 void Curso::generarListaAsignados( Cola *candidatos, int caso ){
 	
 	Cola *temp = new Cola();

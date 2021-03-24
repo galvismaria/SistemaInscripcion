@@ -20,6 +20,7 @@ class Curso{
 		
 		Curso();
 		Curso(string nombre, int id, int cupos);
+		string getNombre();
 		void generarListaAsignados(Cola *candidatos, int caso);
 		void asignarMaterias();
 		void mostrarListaAsignados();
