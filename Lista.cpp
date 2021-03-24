@@ -34,14 +34,14 @@ void Lista::insertar(Curso *curso){
     if ( listaVacia() ){
     	
         principio = new Nodo();
-        principio->siguiente = principio;
+        principio->siguiente = NULL;
         principio->curso = curso;
         
     } else{
     	
         ultimo();
         actual->siguiente = new Nodo();
-        actual->siguiente->siguiente = actual->siguiente;
+        actual->siguiente = actual->siguiente;
         actual->siguiente->curso = curso;
         
     }

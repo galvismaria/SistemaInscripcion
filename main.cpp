@@ -1,5 +1,6 @@
 #include "Cola.h"
 #include "Curso.h"
+#include "Lista.h"
 #include "Global.h"
 
 int main(){
@@ -18,22 +19,17 @@ int main(){
 	cola->encolar(est5);
 	
 	Curso *curso = new Curso("Matematicas", 1, 3);
-	Curso *otroCurso = new Curso("Informatica", 2, 2);
+	Curso *otroCurso =  new Curso("Informatica", 2, 2);
+	Curso *otroOtroCurso =  new Curso("Logica", 2, 2);
 	
 	curso->generarListaAsignados(cola, 1);
 	
-	cola->encolar(est1);
-	cola->encolar(est2);
-	cola->encolar(est3);
-	cola->encolar(est4);
-	cola->encolar(est5);
-	
-	otroCurso->generarListaAsignados(cola, 2);
-	
-	
 	curso->mostrarListaAsignados();
 	curso->mostrarListaEspera();
-	otroCurso->mostrarListaAsignados();
-	otroCurso->mostrarListaEspera();
-	est5->mostrarMaterias();
+	
+	Lista *lista = new Lista();
+	lista->insertar(curso);
+	lista->insertar(otroCurso);
+	lista->insertar(otroOtroCurso);
+	lista->Mostrar();
 }
