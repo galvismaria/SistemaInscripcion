@@ -23,7 +23,8 @@ class Inscripcion{
 		void ingresarCurso(Curso *curso);
 		void asignarCandidatos();
 		void inscribirEstudiantes();
-		void readList(Lista* );
+		void readList();
+		void ListaEstudiantes();
 	
 };
 
