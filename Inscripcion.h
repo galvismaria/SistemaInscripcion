@@ -33,6 +33,8 @@ class Inscripcion{
 		void asignarCandidatos();
 		void inscribirEstudiantes();
 		void cargarCursos();
+		void cargarEstudiantes();
+		void mostrarEstudiantes();
 		
 		/* ----- Destructor ----- */
 		

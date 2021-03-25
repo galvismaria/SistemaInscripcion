@@ -92,7 +92,7 @@ void Inscripcion::cargarCursos(){
             
             if (!archivo.eof()){
             	
-            	cout << "Materia:  " << Mat << " \t id: " << id << " - Cupos: " << cupos << " - Prioridad: " << prioridad << endl;
+            	//cout << "Materia:  " << Mat << " \t id: " << id << " - Cupos: " << cupos << " - Prioridad: " << prioridad << endl;
             	cursos->insertar( new Curso( id, cupos, prioridad ) );
             
             } 
@@ -105,6 +105,52 @@ void Inscripcion::cargarCursos(){
         cout<< "No se encontro el archivo."<< endl;
     }
     
+}
+
+void Inscripcion::cargarEstudiantes(){
+	
+	archivo.open("ListaEstudiantes.txt", ios::in);
+	
+    if ( archivo.is_open() ){
+    	
+		char nombre[10];
+		char apellido[10];
+		char carrera[12];
+		int cedula, indice, nivel, creditos;
+		
+        while ( !archivo.eof() ){
+        	
+            archivo >> nombre >> apellido >> cedula >> carrera >> indice >> nivel >> creditos;
+            
+            if ( !archivo.eof() ){
+            	
+            	//cout<<"Nombre:  "<< nombre << " " << apellido << " Cedula: " << cedula << " Carrera: " << carrera << "Indice: " << indice << "Nivel: " << nivel << "Creditos: " << creditos << endl;
+            	string str1(nombre);
+            	string str2(apellido);
+            	string nombreCompleto = str1 + " " + str2;
+				
+				
+				estudiantes->encolar( new Estudiante(nombreCompleto, carrera, cedula, indice, nivel, creditos ) );
+			} 
+        }
+        
+        archivo.close();
+        
+    } else {
+    	
+        cout<< "No se encontro el archivo."<< endl;
+	
+	}
+}
+
+void Inscripcion::mostrarEstudiantes(){
+	
+	if ( !estudiantes->estaVacia() ){
+		
+		estudiantes->imprimir();
+		
+	}
+	
 }
 
 Inscripcion::~Inscripcion(){
