@@ -73,8 +73,6 @@ void Inscripcion::inscribirEstudiantes(){
 
 void Inscripcion::readList(Lista *ListaM){
 
-	int id;
-    int Cupos;
     archivo.open("ListaMaterias2.txt", ios::in);
     if(archivo.is_open()){
     	int id;//ide de las materias.
@@ -92,4 +90,20 @@ void Inscripcion::readList(Lista *ListaM){
     }else{
         cout<< "No se encontro el archivo."<< endl;
     }
+
+  archivo.open("ListaEstudiantes.txt", ios::in);
+    if(archivo.is_open()){
+		char name[10];//Vector de caracteres para leer los nombre.
+		char surname[10];//Vector de caracteres para leer apellido.
+		char carrer[12];//carrera del estudiante
+		int cedula, Index, Level, Credits; //cedula, indice, nivel, creditos del estudiante
+        while(!archivo.eof()){
+            archivo>>name>>surname>>cedula>>carrer>>Index>>Level>>Credits;
+            if (!archivo.eof()){
+            cout<<"Nombre del estudiante:  "<<name<<" Apellido: "<<surname<< " Cédula: "<<cedula<<" Carrera: "<<carrer<<"Indice:"<<Index<<"Nivel: "<< Level<<"Créditos: "<<Credits<<endl;
+            } 
+        }
+        archivo.close();
+    }else{
+        cout<< "No se encontro el archivo."<< endl;
 }
