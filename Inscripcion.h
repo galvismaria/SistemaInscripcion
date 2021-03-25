@@ -1,6 +1,7 @@
 #ifndef INSCRIPCION
 #define INSCRIPCION
 
+#include<fstream>
 #include "Cola.h"
 #include "Lista.h"
 #include "Global.h"
@@ -14,7 +15,7 @@ class Inscripcion{
 		
 		Cola *estudiantes;
 		Lista *cursos;
-		
+		fstream archivo;
 		
 	public:
 		Inscripcion();
