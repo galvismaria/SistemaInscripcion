@@ -25,11 +25,10 @@ class Lista{
         Lista();
         ~Lista();
         void insertar(Curso *curso);
-        Curso *getPrincipio();
-        Curso *sacarNodo();
         Curso* ValorActual();
         bool listaVacia();
         bool haySiguiente();
+        bool hayActual();
         void siguiente();
         void primero();
         void ultimo();        

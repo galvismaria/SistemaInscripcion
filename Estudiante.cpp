@@ -27,6 +27,19 @@ Estudiante::Estudiante(string nombre, string carrera, int cedula, float indice, 
 	this->nMaterias = 0;
 }
 
+Estudiante::Estudiante(Estudiante *estudiante){
+	
+	this->nombre = estudiante->nombre;
+	this->carrera = estudiante->carrera;
+	this->cedula = estudiante->cedula;
+	this->indice = estudiante->indice;
+	this->nivel = estudiante->nivel;
+	this->creditos = estudiante->creditos;
+	this->inscrito = estudiante->inscrito;
+	this->nMaterias = estudiante->nMaterias;
+	
+}
+
 void Estudiante::setNombre(string nombre){
 	this->nombre = nombre;
 }
@@ -55,11 +68,23 @@ void Estudiante::setNMaterias(int nMaterias){
 	this->nMaterias = nMaterias;
 }
 
-void Estudiante::setMateria(string nombre, bool asignado, int lugar){
+void Estudiante::setMateria(int id, bool asignado, int lugar){
 	
-	this->materiasInscritas[nMaterias].nombre = nombre;
-	this->materiasInscritas[nMaterias].asignado = asignado;
-	this->materiasInscritas[nMaterias].lugar = lugar;
+	for ( int i = 0 ; i < nMaterias ; i++ ){
+		
+		if ( this->materias[i].id == id ){
+			
+			this->materias[i].asignado = asignado;
+			this->materias[i].lugar = lugar;
+			return;
+			
+		}
+		
+	}
+	
+	this->materias[nMaterias].id = id;
+	this->materias[nMaterias].asignado = asignado;
+	this->materias[nMaterias].lugar = lugar;
 	nMaterias++;
 	
 }
@@ -80,8 +105,21 @@ int Estudiante::getCreditos(){
 	return creditos;
 }
 
+int Estudiante::getNMaterias(){
+	return nMaterias;
+}
+
 bool Estudiante::estaInscrito(){
 	return inscrito;
+}
+
+void Estudiante::obtenerMaterias(int arr[]){
+	
+	for ( int i = 0 ; i < nMaterias ; i++ ){
+		
+		arr[i] = materias[i].id;
+		
+	}
 }
 
 bool Estudiante::tienePrioridad(Estudiante *estudiante, int caso){
@@ -132,13 +170,13 @@ void Estudiante::mostrarMaterias(){
 	
 	for ( int i = 0 ; i < nMaterias ; i++ ){
 		
-		cout << "Materia: " << materiasInscritas[i].nombre << " \n";
+		cout << "Materia: " << " \n";
 		cout << "Estatus: ";
-		if ( materiasInscritas[i].asignado )
+		if ( materias[i].asignado )
 			cout << "Inscrito" << "\n";
-		if ( !materiasInscritas[i].asignado )
+		if ( !materias[i].asignado )
 			cout << "En espera" << "\n";
-		cout << "Puesto: " << materiasInscritas[i].lugar << " \n";
+		cout << "Puesto: " << materias[i].lugar << " \n";
 		
 	}
 	

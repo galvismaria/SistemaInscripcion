@@ -27,6 +27,12 @@ bool Lista::listaVacia(){
     
 }
 
+bool Lista::hayActual(){
+	
+	return actual != NULL;
+	
+}
+
 void Lista::insertar(Curso *curso){
 	
 	Nodo* temp;
@@ -98,7 +104,6 @@ void Lista::Mostrar() {
    
 	while (aux) {
 		
-		cout << aux->curso->getNombre() << "-> ";
     	aux = aux->siguiente;
       
    }
@@ -106,8 +111,4 @@ void Lista::Mostrar() {
    cout << endl;
 }
 
-Curso* Lista::getPrincipio(){
-	
-	return principio->curso;
-	
-}
+

@@ -2,53 +2,47 @@
 
 Curso::Curso(){
 	
-	nombre = "\0";
 	id = 0;
 	cupos = 0;
+	prioridad = 0;
 	listaAsignados = new Cola();
 	listaEspera = new Cola();
+	candidatos = new Cola();
 	
 }
 
-Curso::Curso(string nombre, int id, int cupos){
+Curso::Curso(int id, int cupos, int prioridad){
 	
-	this->nombre = nombre;
 	this->id = id;
 	this->cupos = cupos;
+	this->prioridad = prioridad;
 	listaAsignados = new Cola();
 	listaEspera = new Cola();
+	candidatos = new Cola();
 	
 }
 
-string Curso::getNombre(){
+int Curso::getID(){
 	
-	return nombre;
+	return id;
 	
 }
 
-void Curso::generarListaAsignados( Cola *candidatos, int caso ){
+void Curso::generarListaAsignados(){
 	
-	Cola *temp = new Cola();
+	candidatos->ordenarPrioridad(prioridad);
 	
-	while ( !candidatos->estaVacia() ){
+	while ( listaAsignados->getElementos() < this->cupos && !candidatos->estaVacia()  ){
 		
-		temp->encolar( candidatos->desencolar() );
-		
-	}
-	
-	temp->ordenarPrioridad(caso);
-	
-	while ( listaAsignados->getElementos() < this->cupos ){
-		
-		listaAsignados->encolar ( temp->desencolar() );
+		listaAsignados->encolar ( candidatos->desencolar() );
 		listaAsignados->actualizarEstadoInscripcion(true);
 		listaAsignados->asignarPosiciones();
 		
 	}
 		
-	while ( !temp->estaVacia() ){
+	while ( !candidatos->estaVacia() ){
 		
-		listaEspera->encolar ( temp->desencolar() );
+		listaEspera->encolar ( candidatos->desencolar() );
 		listaAsignados->actualizarEstadoInscripcion(false);
 		listaEspera->asignarPosiciones();
 		
@@ -67,7 +61,7 @@ void Curso::asignarMaterias(){
 		
 		while ( recorr ){
 			
-			recorr->getEstudiante()->setMateria( this->nombre, true, recorr->getPosicion() );
+			recorr->getEstudiante()->setMateria( this->id, true, recorr->getPosicion() );
 			recorr = recorr->getSiguiente();
 			
 		}
@@ -81,12 +75,18 @@ void Curso::asignarMaterias(){
 		
 		while ( recorr ){
 			
-			recorr->getEstudiante()->setMateria( this->nombre, false, recorr->getPosicion() );
+			recorr->getEstudiante()->setMateria( this->id, false, recorr->getPosicion() );
 			recorr = recorr->getSiguiente();
 			
 		}
 		
 	}
+	
+}
+
+void Curso::ingresarCandidato(Estudiante *estudiante){
+	
+	candidatos->encolar(estudiante);
 	
 }
 
@@ -107,6 +107,17 @@ void Curso::mostrarListaEspera(){
 		
 		cout << " En espera: ";
 		listaEspera->imprimir();
+		
+	}
+	
+}
+
+void Curso::mostrarListaCandidatos(){
+	
+	if ( !candidatos->estaVacia() ){
+		
+		cout << " Candidatos: ";
+		candidatos->imprimir();
 		
 	}
 	
