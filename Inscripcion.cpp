@@ -13,7 +13,7 @@ void Inscripcion::ingresarEstudiantes(Estudiante *estudiante){
 	
 }
 
-void Inscripcion::ingresarCurso(Curso *curso){
+void Inscripcion::ingresarCurso( Curso *curso ){
 	
 	cursos->insertar(curso);
 	
@@ -69,7 +69,14 @@ void Inscripcion::inscribirEstudiantes(){
 		
 	}
 	
+}
+
+void Inscripcion::listaCursos(){
 	
+	if ( !cursos->listaVacia() ){
 		
+		cursos->Mostrar();
+		
+	}
 	
 }

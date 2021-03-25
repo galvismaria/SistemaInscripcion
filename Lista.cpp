@@ -104,6 +104,7 @@ void Lista::Mostrar() {
    
 	while (aux) {
 		
+		cout << "ID: " << ValorActual()->getID() << " ->";
     	aux = aux->siguiente;
       
    }

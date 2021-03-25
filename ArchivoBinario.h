@@ -1,7 +1,9 @@
 #include<iostream>
 #include<fstream>
 #include <stdio.h>
-#inlcide"Lista.h"
+#include "Lista.h"
+#include "Curso.h"
+#include "Inscripcion.h"
 
 
 using namespace std;
@@ -12,7 +14,7 @@ using namespace std;
 };	*/
 	
 fstream archivo;
-void readFile(Lista* L){
+void readFile(Inscripcion *i){
 	
 	int id;
     int Cupos;
@@ -26,7 +28,8 @@ void readFile(Lista* L){
             archivo>>Mat>>id>>Cupos>>prio;
             if (!archivo.eof()){
             cout<<"Materia:  "<<Mat<<" \t id: "<<id<< " - Cupos: "<<Cupos<<" - Prioridad: "<<prio<<endl;
-            
+            i->ingresarCurso( new Curso(id, Cupos, prio) );
+
             } 
         }
         archivo.close();
@@ -34,7 +37,7 @@ void readFile(Lista* L){
         cout<< "No se encontro el archivo."<< endl;
     }
 }
-void Materias(int id){
+void Materias(int id);
 /*	
  Mat M = Calculo_Numerico;
     for(int i = 0; i < id; i++){
@@ -54,13 +57,13 @@ void Materias(int id){
 	}
 }*/
 
-int main(){
-    
-    /*int id = 10;
-    Materias(id);*/
-   
-    cout<<endl;
-     readFile();
-    return 0;
-}
+//int main(){
+//    
+//    /*int id = 10;
+//    Materias(id);*/
+//   
+//    cout<<endl;
+//     readFile();
+//    return 0;
+//}
 
