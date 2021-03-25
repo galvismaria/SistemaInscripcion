@@ -14,7 +14,7 @@ class Inscripcion{
 		
 		Cola *estudiantes;
 		Lista *cursos;
-		
+		fstream archivo;
 		
 	public:
 		Inscripcion();
@@ -22,7 +22,7 @@ class Inscripcion{
 		void ingresarCurso(Curso *curso);
 		void asignarCandidatos();
 		void inscribirEstudiantes();
-		void readList(Lista* );
+		void cargarCursos();
 	
 };
 

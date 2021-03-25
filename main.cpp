@@ -3,7 +3,6 @@
 #include "Lista.h"
 #include "Inscripcion.h"
 #include "Global.h"
-#include "ArchivoBinario.h"
 
 int main(){
 	
@@ -20,12 +19,7 @@ int main(){
 	est4->setMateria(1,false, 0);
 	est5->setMateria(1, false, 0);
 	est6->setMateria(1, false, 0);
-	
-	Lista *lista = new Lista();
-	
-	
-	
-	
+
 	Inscripcion *ins = new Inscripcion();
 	
 	ins->ingresarEstudiantes(est1);
@@ -35,11 +29,9 @@ int main(){
 	ins->ingresarEstudiantes(est5);
 	ins->ingresarEstudiantes(est6);
 	
-	readFile(ins);
+	ins->cargarCursos();
 	
 	
-	
-	//ins->listaCursos();
 	ins->asignarCandidatos();
 	ins->inscribirEstudiantes();
 //	curso->ingresarCandidato(est1);

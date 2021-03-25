@@ -71,25 +71,33 @@ void Inscripcion::inscribirEstudiantes(){
 	
 }
 
-void Inscripcion::readList(Lista *ListaM){
-
-	int id;
-    int Cupos;
-    archivo.open("ListaMaterias2.txt", ios::in);
-    if(archivo.is_open()){
-    	int id;//ide de las materias.
-    	int prio;//Prioridad .
-        int Cupos;//Cupode de las materias.
-        char Mat[30];//Vector de caracteres para leer las materias.
-        while(!archivo.eof()){
-            archivo>>Mat>>id>>Cupos>>prio;
+void Inscripcion::cargarCursos(){
+    
+    archivo.open("ListaMaterias.txt", ios::in);
+    
+    if ( archivo.is_open() ){
+    	
+    	int id;
+    	int prioridad;
+        int cupos;
+        char Mat[30];
+        
+        while( !archivo.eof() ){
+        	
+            archivo >> Mat >> id >> cupos >> prioridad;
+            
             if (!archivo.eof()){
-            cout<<"Materia:  "<<Mat<<" \t id: "<<id<< " - Cupos: "<<Cupos<<" - Prioridad: "<<prio<<endl;
+            	
+            	cout << "Materia:  " << Mat << " \t id: " << id << " - Cupos: " << cupos << " - Prioridad: " << prioridad << endl;
+            	cursos->insertar( new Curso( id, cupos, prioridad ) );
             
             } 
         }
+        
         archivo.close();
-    }else{
+        
+    } else {
+    	
         cout<< "No se encontro el archivo."<< endl;
     }
 }
