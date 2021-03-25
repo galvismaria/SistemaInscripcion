@@ -1,15 +1,15 @@
-#include "Cola.h"
-#include "Curso.h"
-#include "Lista.h"
 #include "Inscripcion.h"
-#include "Global.h"
+
 
 int main(){
 
-	Inscripcion *ins = new Inscripcion();
+	Estudiante *e = new Estudiante("Maria", "Ing", 26753655, 7, 3, 30);
+	e->setMateria(5, false, 0);
+	e->setMateria(7, false, 0);
 	
-	ins->cargarCursos();
-	ins->cargarEstudiantes();
-	ins->mostrarEstudiantes();
+	Cola *cola = new Cola();
+	cola->encolar(e);
+	cola->imprimirMateriasEstudiante("Maria");
+	
 
 }

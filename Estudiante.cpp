@@ -108,6 +108,12 @@ string Estudiante::getNombre(){
 	
 }
 
+int Estudiante::getCedula(){
+	
+	return cedula;
+	
+}
+
 float Estudiante::getIndice(){
 	
 	return indice;
@@ -193,20 +199,42 @@ bool Estudiante::tienePrioridad( Estudiante *estudiante, int caso ){
 	
 } 
 
-void Estudiante::mostrarEstatus(){
+void Estudiante::mostrarInfo(){
 	
 	cout << "Nombre: " << this->nombre << " \n";
-	cout << "�ndice acad�mico: " << this->indice << " \n";
+	cout << "Indice academico: " << this->indice << " \n";
 	cout << "Nivel: " << this->nivel << " \n";
-	cout << "Unidades de cr�dito : " << this->creditos << " \n";
+	cout << "Creditos aprobados: " << this->creditos << " \n";
 	
 }
 
+string Estudiante::listaMaterias( int id ){
+	
+	char *MATERIAS[] = { "Simulacion informatica",
+							"Arquitectira del computador", 
+							"Sistema de bases de datos",
+							"Redes de computadoras",
+							"Sistemas distribuidos",
+							"Sistemas de operacion",
+							"Informatica industrial",
+							"Innovacion y desarrollo",
+							"Ingenieria del software",
+							"Lenguajes de compiladores"
+							 };
+	
+	string str(MATERIAS[id-1]);
+	
+	return str;
+	
+};
+
 void Estudiante::mostrarMaterias(){
+	
+	cout << "Nombre: " << this->nombre << " \n";
 	
 	for ( int i = 0 ; i < nMaterias ; i++ ){
 		
-		cout << "Materia: " << " \n";
+		cout << "\nMateria: " << listaMaterias( materias[i].id ) << "\n";
 		cout << "Estatus: ";
 		if ( materias[i].asignado )
 			cout << "Inscrito" << "\n";

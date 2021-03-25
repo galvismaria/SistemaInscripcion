@@ -7,6 +7,18 @@ Inscripcion::Inscripcion(){
 	
 }
 
+Cola* Inscripcion::getEstudiantes(){
+	
+	return estudiantes;
+	
+}
+
+Lista* Inscripcion::getCursos(){
+	
+	return cursos;
+	
+}
+
 void Inscripcion::ingresarEstudiantes( Estudiante *estudiante ){
 	
 	estudiantes->encolar( estudiante );
@@ -62,16 +74,11 @@ void Inscripcion::inscribirEstudiantes(){
 	
 	while ( cursos->hayActual() ){
 		
-		cursos->valorActual()->mostrarListaCandidatos();
 		cursos->valorActual()->generarListaAsignados();
-		cursos->valorActual()->mostrarListaAsignados();
-
-		
 		cursos->siguiente();
 		
 	}
-	
-	cursos->mostrar();
+
 	
 }
 
@@ -143,11 +150,47 @@ void Inscripcion::cargarEstudiantes(){
 	}
 }
 
+void Inscripcion::cargarMateriasEstudiante( int cedula, int materias[], int n ){
+	
+	if ( !estudiantes->estaVacia() ){
+		
+		Nodo *temp = estudiantes->getInicio();
+		
+		while( temp ){
+			
+			if ( temp->getEstudiante()->getCedula() == cedula ){
+				
+				for ( int i = 0 ; i < n ; i++ ){
+					
+					temp->getEstudiante()->setMateria( materias[i], false, 0 );
+					
+				}
+
+			}
+			
+			temp = temp->getSiguiente();
+			
+		}
+		
+	}
+	
+}
+
 void Inscripcion::mostrarEstudiantes(){
 	
 	if ( !estudiantes->estaVacia() ){
 		
 		estudiantes->imprimir();
+		
+	}
+	
+}
+
+void Inscripcion::mostrarCursos(){
+	
+	if ( !estudiantes->estaVacia() ){
+		
+		cursos->imprimir();
 		
 	}
 	

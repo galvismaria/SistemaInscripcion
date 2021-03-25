@@ -3,7 +3,6 @@
 
 #include "Cola.h"
 #include "Lista.h"
-#include "Global.h"
 
 
 using namespace std;
@@ -26,6 +25,11 @@ class Inscripcion{
 		
 		Inscripcion();
 		
+		/* ----- Getters ----- */
+	
+		Cola *getEstudiantes();
+		Lista *getCursos();
+		
 		/* ----- Procedimientos ----- */
 		
 		void ingresarEstudiantes(Estudiante *estudiante);
@@ -34,7 +38,9 @@ class Inscripcion{
 		void inscribirEstudiantes();
 		void cargarCursos();
 		void cargarEstudiantes();
+		void cargarMateriasEstudiante( int cedula, int materias[], int n );
 		void mostrarEstudiantes();
+		void mostrarCursos();
 		
 		/* ----- Destructor ----- */
 		

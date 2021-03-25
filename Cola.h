@@ -2,8 +2,6 @@
 #define COLA
 
 #include "Nodo.h"
-#include "Estudiante.h"
-#include "Global.h"
 
 class Cola{
 	
@@ -42,6 +40,7 @@ class Cola{
 		void ordenarPrioridad(int caso);
 		void actualizarEstadoInscripcion(bool estado);
 		void imprimir();
+		void imprimirMateriasEstudiante(string nombre);
 		
 		/* ----- Destructor ----- */
 		

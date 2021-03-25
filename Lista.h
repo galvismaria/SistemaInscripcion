@@ -41,7 +41,7 @@ class Lista{
         void siguiente();
         void primero();
         void ultimo();        
-        void mostrar();
+        void imprimir();
         
         /* ----- Destructor ----- */
         

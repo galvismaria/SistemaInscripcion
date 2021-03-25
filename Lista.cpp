@@ -81,7 +81,7 @@ Curso* Lista::valorActual(){
     
 }
 
-void Lista::mostrar() {
+void Lista::imprimir() {
 	
    Nodo* aux;
 
@@ -89,8 +89,9 @@ void Lista::mostrar() {
    
 	while ( aux ) {
 		
-		cout << "ID: " << aux->curso->getID() << " ->";
-    	aux = aux->siguiente;
+		aux->curso->mostrarInfo();
+		cout << "\n";
+		aux = aux->siguiente;
       
    }
    

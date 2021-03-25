@@ -5,8 +5,6 @@
 
 using namespace std;
 
-
-
 class Estudiante{
 	
 	private:
@@ -50,10 +48,11 @@ class Estudiante{
 		void setEstado(bool inscrito);
 		void setNMaterias(int nMaterias);
 		void setMateria(int id, bool asignado, int lugar);
-		string getNombre();
 		
 		/* ----- Getters ----- */
 		
+		string getNombre();
+		int getCedula();
 		float getIndice();
 		int getNivel();
 		int getCreditos();
@@ -64,7 +63,8 @@ class Estudiante{
 		
 		bool tienePrioridad(Estudiante *estudiante, int caso);
 		void obtenerMaterias(int arr[]);
-		void mostrarEstatus();
+		void mostrarInfo();
+		string listaMaterias( int id );
 		void mostrarMaterias();
 		
 		/* ----- Destructor ----- */

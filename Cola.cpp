@@ -154,18 +154,40 @@ void Cola::imprimir(){
 	
 		while ( aux ){
 		
-			cout << " -> " << aux->getEstudiante()->getNombre() << " (" << aux->getPosicion() << ") ";
+			aux->getEstudiante()->mostrarInfo();
+			cout << "\n";
 			aux = aux->getSiguiente();
 		
 		}
-	
-		cout << "\n";
 		
 	}
 	
 	else{
 		
 		cout << "Cola vacia";
+	}
+	
+}
+
+void Cola::imprimirMateriasEstudiante(string nombre){
+	
+	if ( !estaVacia() ){
+		
+		Nodo *aux;
+	
+		aux = inicio;
+	
+		while ( aux ){
+			
+			if ( aux->getEstudiante()->getNombre() == nombre ){
+				
+				aux->getEstudiante()->mostrarMaterias();
+				
+			}
+			aux = aux->getSiguiente();
+		
+		}
+		
 	}
 	
 }

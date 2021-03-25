@@ -2,8 +2,6 @@
 #define CURSO
 
 #include "Cola.h"
-#include "Estudiante.h"
-#include "Global.h"
 
 using namespace std;
 
@@ -44,6 +42,8 @@ class Curso{
 		void generarListaAsignados();
 		void asignarMaterias();
 		void ingresarCandidato(Estudiante *estudiante);
+		string listaMaterias( int id );
+		void mostrarInfo();
 		void mostrarListaAsignados();
 		void mostrarListaEspera();
 		void mostrarListaCandidatos();

@@ -126,11 +126,63 @@ void Curso::ingresarCandidato( Estudiante *estudiante ){
 	
 }
 
+string Curso::listaMaterias( int id ){
+	
+	char *MATERIAS[] = { "Simulacion informatica",
+							"Arquitectira del computador", 
+							"Sistema de bases de datos",
+							"Redes de computadoras",
+							"Sistemas distribuidos",
+							"Sistemas de operacion",
+							"Informatica industrial",
+							"Innovacion y desarrollo",
+							"Ingenieria del software",
+							"Lenguajes de compiladores"
+							 };
+	
+	string str(MATERIAS[id-1]);
+	
+	return str;
+	
+}
+
+void Curso::mostrarInfo(){
+	
+	cout << "Nombre: " << listaMaterias( id ) << " \n";
+	cout << "Cupos disponibles: " << this->cupos << " \n";
+	cout << "Tipo de prioridad: ";
+	
+	switch ( this->prioridad ){
+		
+		case 1:
+			
+			cout << "Indice academico, nivel actual" << " \n";
+			break;
+		
+		case 2:
+			
+			cout << "Nivel actual, indice academico" << " \n";
+			break;
+			
+		case 3:
+			
+			cout << "Numero de creditos aprobados, indice academico" << " \n";
+			break;
+		
+		default:
+			
+			break;
+		
+	};
+	
+}
+
+
 void Curso::mostrarListaAsignados(){
 	
 	if ( !listaAsignados->estaVacia() ){
 		
-		cout << "Asignados: ";
+		cout << "ASIGNADOS: ";
 		listaAsignados->imprimir();
 		
 	}
@@ -141,7 +193,7 @@ void Curso::mostrarListaEspera(){
 	
 	if ( !listaEspera->estaVacia() ){
 		
-		cout << " En espera: ";
+		cout << "EN ESPERA: ";
 		listaEspera->imprimir();
 		
 	}
@@ -152,7 +204,7 @@ void Curso::mostrarListaCandidatos(){
 	
 	if ( !candidatos->estaVacia() ){
 		
-		cout << " Candidatos: ";
+		cout << "CANDIDATOS: ";
 		candidatos->imprimir();
 		
 	}
