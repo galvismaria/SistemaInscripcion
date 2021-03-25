@@ -3,7 +3,6 @@
 #include "Lista.h"
 #include "Inscripcion.h"
 #include "Global.h"
-#include "ArchivoBinario.h"
 
 int main(){
 	
@@ -35,7 +34,6 @@ int main(){
 	ins->ingresarEstudiantes(est5);
 	ins->ingresarEstudiantes(est6);
 	
-	readFile(ins);
 	
 	
 	
