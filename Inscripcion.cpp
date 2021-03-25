@@ -7,15 +7,15 @@ Inscripcion::Inscripcion(){
 	
 }
 
-void Inscripcion::ingresarEstudiantes(Estudiante *estudiante){
+void Inscripcion::ingresarEstudiantes( Estudiante *estudiante ){
 	
-	estudiantes->encolar(estudiante);
+	estudiantes->encolar( estudiante );
 	
 }
 
-void Inscripcion::ingresarCurso(Curso *curso){
+void Inscripcion::ingresarCurso( Curso *curso ){
 	
-	cursos->insertar(curso);
+	cursos->insertar( curso );
 	
 }
 
@@ -30,7 +30,7 @@ void Inscripcion::asignarCandidatos(){
 		
 		temp = estudiantes->desencolar();
 		
-		temp->obtenerMaterias(materias);
+		temp->obtenerMaterias( materias );
 		
 		for ( int i = 0 ; i < temp->getNMaterias() ; i++ ){
 			
@@ -38,9 +38,9 @@ void Inscripcion::asignarCandidatos(){
 			
 			while ( cursos->hayActual() ){
 				
-				if ( materias[i] == cursos->ValorActual()->getID() ){
+				if ( materias[i] == cursos->valorActual()->getID() ){
 					
-					cursos->ValorActual()->ingresarCandidato( new Estudiante(temp) );
+					cursos->valorActual()->ingresarCandidato( new Estudiante( temp ) );
 					
 				}
 				
@@ -62,12 +62,16 @@ void Inscripcion::inscribirEstudiantes(){
 	
 	while ( cursos->hayActual() ){
 		
-		cursos->ValorActual()->mostrarListaCandidatos();
-		cursos->ValorActual()->generarListaAsignados();
-		cursos->ValorActual()->mostrarListaAsignados();
+		cursos->valorActual()->mostrarListaCandidatos();
+		cursos->valorActual()->generarListaAsignados();
+		cursos->valorActual()->mostrarListaAsignados();
+
+		
 		cursos->siguiente();
 		
 	}
+	
+	cursos->mostrar();
 	
 }
 
@@ -100,4 +104,9 @@ void Inscripcion::cargarCursos(){
     	
         cout<< "No se encontro el archivo."<< endl;
     }
+    
+}
+
+Inscripcion::~Inscripcion(){
+	;
 }

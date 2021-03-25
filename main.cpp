@@ -16,7 +16,7 @@ int main(){
 	est1->setMateria(1,false, 0);
 	est2->setMateria(1, false, 0);
 	est3->setMateria(1, false, 0);
-	est4->setMateria(1,false, 0);
+	est4->setMateria(2,false, 0);
 	est5->setMateria(1, false, 0);
 	est6->setMateria(1, false, 0);
 

@@ -8,6 +8,8 @@
 class Cola{
 	
 	private:
+		
+		/* ----- ATRIBUTOS ----- */
 
 		Nodo *inicio;
 		Nodo *fin;
@@ -15,19 +17,35 @@ class Cola{
 		
 	public:
 		
+		/* ----- MÉTODOS ----- */
+		
+		/* ----- Constructores ----- */
+		
 		Cola();
+		
+		/* ----- Setters ----- */
+		
+		;
+		
+		/* ----- Getters ----- */
+		
 		Nodo *getInicio();
 		Nodo *getFin();
 		int getElementos();
+		
+		/* ----- Procedimientos ----- */
+		
 		bool estaVacia();
 		void encolar(Estudiante *estudiante);
-		void encolarAdelante(Estudiante *estudiante);
-		void encolarLuegoDe(Estudiante *estudiante, Nodo *lugar);
 		Estudiante* desencolar();
 		void asignarPosiciones();
 		void ordenarPrioridad(int caso);
 		void actualizarEstadoInscripcion(bool estado);
 		void imprimir();
+		
+		/* ----- Destructor ----- */
+		
+		~Cola();
 		
 };
 

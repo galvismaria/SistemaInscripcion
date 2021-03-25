@@ -28,27 +28,63 @@ int Curso::getID(){
 	
 }
 
+bool Curso::hayCandidatos(){
+	
+	if ( !candidatos->estaVacia() ){
+		
+		return true;
+		
+	}
+	
+	else{
+		
+		return false;
+		
+	}
+	
+}
+
+bool Curso::hayAsignados(){
+	
+	if ( !listaAsignados->estaVacia() ){
+		
+		return true;
+		
+	}
+	
+	else{
+		
+		return false;
+		
+	}
+	
+}
+
 void Curso::generarListaAsignados(){
 	
-	candidatos->ordenarPrioridad(prioridad);
-	
-	while ( listaAsignados->getElementos() < this->cupos && !candidatos->estaVacia()  ){
+	if ( !candidatos->estaVacia() ){
 		
-		listaAsignados->encolar ( candidatos->desencolar() );
-		listaAsignados->actualizarEstadoInscripcion(true);
-		listaAsignados->asignarPosiciones();
+		candidatos->ordenarPrioridad( prioridad );
+	
+		while ( listaAsignados->getElementos() < this->cupos && !candidatos->estaVacia()  ){
+		
+			listaAsignados->encolar ( candidatos->desencolar() );
+			listaAsignados->actualizarEstadoInscripcion( true );
+			listaAsignados->asignarPosiciones();
+		
+		}
+		
+		while ( !candidatos->estaVacia() ){
+		
+			listaEspera->encolar ( candidatos->desencolar() );
+			listaAsignados->actualizarEstadoInscripcion( false );
+			listaEspera->asignarPosiciones();
+		
+		}
+	
+		asignarMaterias();
 		
 	}
-		
-	while ( !candidatos->estaVacia() ){
-		
-		listaEspera->encolar ( candidatos->desencolar() );
-		listaAsignados->actualizarEstadoInscripcion(false);
-		listaEspera->asignarPosiciones();
-		
-	}
-	
-	asignarMaterias();
 	
 }
 
@@ -84,9 +120,9 @@ void Curso::asignarMaterias(){
 	
 }
 
-void Curso::ingresarCandidato(Estudiante *estudiante){
+void Curso::ingresarCandidato( Estudiante *estudiante ){
 	
-	candidatos->encolar(estudiante);
+	candidatos->encolar( estudiante );
 	
 }
 
@@ -121,4 +157,8 @@ void Curso::mostrarListaCandidatos(){
 		
 	}
 	
+}
+
+Curso::~Curso(){
+	;
 }

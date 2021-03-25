@@ -10,7 +10,9 @@ using namespace std;
 class Curso{
 	
 	private:
-
+		
+		/* ----- ATRIBUTOS ----- */
+		
 		int id;
 		int cupos;
 		int prioridad;
@@ -20,9 +22,25 @@ class Curso{
 		
 	public:
 		
+		/* ----- MÉTODOS ----- */
+		
+		/* ----- Constructores ----- */
+		
 		Curso();
 		Curso(int id, int cupos, int prioridad);
+		
+		/* ----- Setters ----- */
+		
+		;
+		
+		/* ----- Getters ----- */
+		
 		int getID();
+		bool hayCandidatos();
+		bool hayAsignados();
+		
+		/* ----- Procedimientos ----- */
+		
 		void generarListaAsignados();
 		void asignarMaterias();
 		void ingresarCandidato(Estudiante *estudiante);
@@ -30,7 +48,9 @@ class Curso{
 		void mostrarListaEspera();
 		void mostrarListaCandidatos();
 		
-
+		/* ----- Destructor ----- */
+		
+		~Curso();
 	
 };
 

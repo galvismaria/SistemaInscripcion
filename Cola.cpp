@@ -8,77 +8,53 @@ Cola::Cola(){
 }
 
 Nodo* Cola::getInicio(){
+	
 	return inicio;
+	
 }
 
 Nodo* Cola::getFin(){
+	
 	return fin;
+	
 }
 
 int Cola::getElementos(){
+	
 	return elementos;
+	
 }
 
 bool Cola::estaVacia(){
 	
 	if ( !inicio && !fin )
+	
 		return true;
 		
 	return false;
 	
 }
 
-void Cola::encolar(Estudiante *estudiante){
+void Cola::encolar( Estudiante *estudiante ){
      
-    Nodo *nuevo = new Nodo(estudiante);
+    Nodo *nuevo = new Nodo( estudiante );
     
     if( inicio == NULL){
+    	
     	inicio = nuevo;
+    	
 	}
 	
 	else{
-		fin->setSiguiente(nuevo);
+		
+		fin->setSiguiente( nuevo );
+		
 		
 	}
 	
 	fin = nuevo;
 	elementos++;
      
-}
-
-void Cola::encolarAdelante(Estudiante *estudiante){
-	
-	if ( inicio ){
-		
-		inicio = new Nodo ( estudiante, inicio );
-		elementos++;
-	}
-	
-}
-
-void Cola::encolarLuegoDe(Estudiante *estudiante, Nodo *lugar){
-	
-	Nodo *temp = inicio;
-	
-	if ( !lugar->getSiguiente() ){
-		
-		encolar(estudiante);
-		
-	}
-	
-	else{
-		
-		while ( temp->getSiguiente() && temp->getSiguiente() != lugar){
-		
-			temp = temp->getSiguiente();
-		
-		}
-	
-	temp->setSiguiente( new Nodo(estudiante, temp->getSiguiente() ) );
-	elementos++;
-		
-	}
-
 }
 
 Estudiante* Cola::desencolar(){
@@ -89,7 +65,9 @@ Estudiante* Cola::desencolar(){
 	nAux = inicio;
 	
 	if ( !nAux ){
+		
 		return NULL;
+		
 	}
 		
 	inicio = nAux->getSiguiente();
@@ -97,7 +75,9 @@ Estudiante* Cola::desencolar(){
 	delete nAux;
 	
 	if ( !inicio ){
+		
 		fin = NULL;
+		
 	}
 	
 	elementos--;
@@ -144,14 +124,14 @@ void Cola::asignarPosiciones(){
 	while ( aux ){
 		
 		n++;
-		aux->setPosicion(n);
+		aux->setPosicion( n );
 		aux = aux->getSiguiente();
 		
 	}
 	
 }
 
-void Cola::actualizarEstadoInscripcion(bool estado){
+void Cola::actualizarEstadoInscripcion( bool estado ){
 	
 	Nodo *aux = inicio;
 	
@@ -188,4 +168,8 @@ void Cola::imprimir(){
 		cout << "Cola vacia";
 	}
 	
+}
+
+Cola::~Cola(){
+	;
 }

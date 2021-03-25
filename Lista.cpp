@@ -6,21 +6,6 @@ Lista::Lista(){
     
 }
 
-Lista::~Lista(){
-	
-    Nodo* aux;
-
-    while ( principio ){
-    	
-        aux = principio;
-        principio = principio->siguiente;
-        delete aux;
-        
-    }
-
-    actual = NULL;
-}
-
 bool Lista::listaVacia(){
 	
     return principio == NULL;
@@ -33,7 +18,7 @@ bool Lista::hayActual(){
 	
 }
 
-void Lista::insertar(Curso *curso){
+void Lista::insertar( Curso *curso ){
 	
 	Nodo* temp;
 
@@ -78,9 +63,9 @@ void Lista::ultimo(){
 	
     primero();
     
-    if (!listaVacia()){
+    if ( !listaVacia() ){
         	
-        while (actual->siguiente){
+        while ( actual->siguiente ){
         	
         	siguiente();
         	
@@ -90,21 +75,21 @@ void Lista::ultimo(){
                 
 }
 
-Curso* Lista::ValorActual(){
+Curso* Lista::valorActual(){
 	
     return actual->curso;
     
 }
 
-void Lista::Mostrar() {
+void Lista::mostrar() {
 	
    Nodo* aux;
 
    aux = principio;
    
-	while (aux) {
+	while ( aux ) {
 		
-		cout << "ID: " << ValorActual()->getID() << " ->";
+		cout << "ID: " << aux->curso->getID() << " ->";
     	aux = aux->siguiente;
       
    }
@@ -112,4 +97,17 @@ void Lista::Mostrar() {
    cout << endl;
 }
 
+Lista::~Lista(){
+	
+    Nodo* aux;
 
+    while ( principio ){
+    	
+        aux = principio;
+        principio = principio->siguiente;
+        delete aux;
+        
+    }
+
+    actual = NULL;
+}

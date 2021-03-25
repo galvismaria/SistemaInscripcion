@@ -9,6 +9,8 @@ class Lista{
 	
     private:
     	
+    	/* ----- ATRIBUTOS ----- */
+    	
     	class Nodo{
     		
     		public:
@@ -22,17 +24,28 @@ class Lista{
         Nodo* actual;
 
     public:
+    	
+    	/* ----- MÉTODOS ----- */
+		
+		/* ----- Constructores ----- */
+    	
         Lista();
-        ~Lista();
+        
+        /* ----- Procedimientos ----- */
+        
         void insertar(Curso *curso);
-        Curso* ValorActual();
+        Curso* valorActual();
         bool listaVacia();
         bool haySiguiente();
         bool hayActual();
         void siguiente();
         void primero();
         void ultimo();        
-        void Mostrar();
+        void mostrar();
+        
+        /* ----- Destructor ----- */
+        
+        ~Lista();
         
 };
 

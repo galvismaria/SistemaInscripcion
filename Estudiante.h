@@ -11,6 +11,8 @@ class Estudiante{
 	
 	private:
 		
+		/* ----- ATRIBUTOS ----- */
+		
 		struct Materias{
 	
 			int id;
@@ -30,10 +32,16 @@ class Estudiante{
 		
 	public:
 		
+		/* ----- MÉTODOS ----- */
+		
+		/* ----- Constructores ----- */
+		
 		Estudiante();
-		~Estudiante();
 		Estudiante(string nombre, string carrera, int cedula, float indice, int nivel, int creditos);
 		Estudiante(Estudiante *estudiante);
+		
+		/* ----- Setters ----- */
+		
 		void setNombre(string nombre);
 		void setCarrera(string carrera);
 		void setIndice(float indice);
@@ -43,15 +51,25 @@ class Estudiante{
 		void setNMaterias(int nMaterias);
 		void setMateria(int id, bool asignado, int lugar);
 		string getNombre();
+		
+		/* ----- Getters ----- */
+		
 		float getIndice();
 		int getNivel();
 		int getCreditos();
 		int getNMaterias();
 		bool estaInscrito();
+		
+		/* ----- Procedimientos ----- */
+		
 		bool tienePrioridad(Estudiante *estudiante, int caso);
 		void obtenerMaterias(int arr[]);
 		void mostrarEstatus();
 		void mostrarMaterias();
+		
+		/* ----- Destructor ----- */
+		
+		~Estudiante();
 		
 	
 };
