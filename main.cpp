@@ -29,7 +29,11 @@ int main(){
 	ins->ingresarEstudiantes(est5);
 	ins->ingresarEstudiantes(est6);
 	
+<<<<<<< HEAD
 	ins->cargarCursos();
+=======
+	
+>>>>>>> 44491220eba8445c6b9f4a9718f5f3cdc2b175ab
 	
 	
 	ins->asignarCandidatos();
