@@ -196,9 +196,9 @@ bool Estudiante::tienePrioridad( Estudiante *estudiante, int caso ){
 void Estudiante::mostrarEstatus(){
 	
 	cout << "Nombre: " << this->nombre << " \n";
-	cout << "Índice académico: " << this->indice << " \n";
+	cout << "ï¿½ndice acadï¿½mico: " << this->indice << " \n";
 	cout << "Nivel: " << this->nivel << " \n";
-	cout << "Unidades de crédito : " << this->creditos << " \n";
+	cout << "Unidades de crï¿½dito : " << this->creditos << " \n";
 	
 }
 
