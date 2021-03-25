@@ -1,7 +1,6 @@
 #ifndef INSCRIPCION
 #define INSCRIPCION
 
-#include<fstream>
 #include "Cola.h"
 #include "Lista.h"
 #include "Global.h"
