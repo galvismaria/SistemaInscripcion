@@ -83,9 +83,9 @@ void Estudiante::setNMaterias( int nMaterias ){
 
 void Estudiante::setMateria( int id, bool asignado, int lugar ){
 	
-	for ( int i = 0 ; i < nMaterias ; i++ ){
+	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 		
-		if ( this->materias[i].id == id ){
+		if (  ( this->materias[i].id != 0 ) && this->materias[i].id  == id ){
 			
 			this->materias[i].asignado = asignado;
 			this->materias[i].lugar = lugar;
@@ -99,6 +99,8 @@ void Estudiante::setMateria( int id, bool asignado, int lugar ){
 	this->materias[nMaterias].asignado = asignado;
 	this->materias[nMaterias].lugar = lugar;
 	nMaterias++;
+	
+	
 	
 }
 
@@ -201,10 +203,10 @@ bool Estudiante::tienePrioridad( Estudiante *estudiante, int caso ){
 
 void Estudiante::mostrarInfo(){
 	
-	cout << "Nombre: " << this->nombre << " \n";
-	cout << "Indice academico: " << this->indice << " \n";
-	cout << "Nivel: " << this->nivel << " \n";
-	cout << "Creditos aprobados: " << this->creditos << " \n";
+	cout << "\tNombre:\t" << this->nombre << " \n";
+	cout << "\tIndice:\t" << this->indice << " \n";
+	cout << "\tNivel:\t" << this->nivel << " \n";
+	cout << "\tUC:\t" << this->creditos << " \n";
 	
 }
 
@@ -234,13 +236,20 @@ void Estudiante::mostrarMaterias(){
 	
 	for ( int i = 0 ; i < nMaterias ; i++ ){
 		
-		cout << "\nMateria: " << listaMaterias( materias[i].id ) << "\n";
-		cout << "Estatus: ";
-		if ( materias[i].asignado )
-			cout << "Inscrito" << "\n";
-		if ( !materias[i].asignado )
-			cout << "En espera" << "\n";
-		cout << "Puesto: " << materias[i].lugar << " \n";
+		if ( materias[i].id != 0 ){
+			
+			cout << "\n\tMateria: " << listaMaterias( materias[i].id ) << "\n";
+			cout << "\tEstatus: ";
+			
+			if ( materias[i].asignado )
+				cout << "Inscrito" << "\n";
+				
+			if ( !materias[i].asignado )
+				cout << "En espera" << "\n";
+				
+			cout << "\tPuesto: " << materias[i].lugar << " \n";
+			
+		}
 		
 	}
 	

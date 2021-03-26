@@ -77,7 +77,7 @@ void Curso::generarListaAsignados(){
 		while ( !candidatos->estaVacia() ){
 		
 			listaEspera->encolar ( candidatos->desencolar() );
-			listaAsignados->actualizarEstadoInscripcion( false );
+			listaEspera->actualizarEstadoInscripcion( false );
 			listaEspera->asignarPosiciones();
 		
 		}
@@ -148,9 +148,8 @@ string Curso::listaMaterias( int id ){
 
 void Curso::mostrarInfo(){
 	
-	cout << "Nombre: " << listaMaterias( id ) << " \n";
-	cout << "Cupos disponibles: " << this->cupos << " \n";
-	cout << "Tipo de prioridad: ";
+	cout << "\tCupos: " << this->cupos << " \n";
+	cout << "\tTipo de prioridad: ";
 	
 	switch ( this->prioridad ){
 		
@@ -182,7 +181,7 @@ void Curso::mostrarListaAsignados(){
 	
 	if ( !listaAsignados->estaVacia() ){
 		
-		cout << "ASIGNADOS: ";
+		cout << "\t\t\t- Asignados -" << " \n\n";
 		listaAsignados->imprimir();
 		
 	}
@@ -193,7 +192,7 @@ void Curso::mostrarListaEspera(){
 	
 	if ( !listaEspera->estaVacia() ){
 		
-		cout << "EN ESPERA: ";
+		cout << "\t\t\t- En espera -" << " \n\n";
 		listaEspera->imprimir();
 		
 	}
@@ -204,12 +203,28 @@ void Curso::mostrarListaCandidatos(){
 	
 	if ( !candidatos->estaVacia() ){
 		
-		cout << "CANDIDATOS: ";
+		cout << "\t\t* * * " << listaMaterias( id ) << " * * *" << " \n\n";
+		
+		cout << "\t\t\t- Candidatos -" << " \n\n";
 		candidatos->imprimir();
 		
 	}
 	
 }
+
+void Curso::mostrarResultados(){
+	
+	cout << "--------------------------------------------------------------------------" << " \n\n";
+	cout << "\t\t* * * " << listaMaterias( id ) << " * * *" << " \n\n";
+	mostrarInfo();
+	cout << "\n";
+	mostrarListaAsignados();
+	mostrarListaEspera();
+	cout << "--------------------------------------------------------------------------" << " \n\n";
+	
+}
+
+
 
 Curso::~Curso(){
 	;

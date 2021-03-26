@@ -40,9 +40,14 @@ class Inscripcion{
 		void cargarEstudiantes();
 		void cargarInscripciones();
 		void cargarMateriasEstudiante( int cedula, int materias[], int n );
+		void procesoInscripcion();
 		void mostrarEstudiantes();
 		void mostrarCursos();
 		void mostrarCandidatos();
+		void listaCursos();
+		void buscarEstudiante();
+		void menuPrincipal();
+		void salir();
 		
 		/* ----- Destructor ----- */
 		

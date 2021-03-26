@@ -15,7 +15,7 @@ class Lista{
     		
     		public:
     			
-    			Curso *curso;
+    			Curso *info;
     			Nodo *siguiente;
     		
 		};
@@ -33,7 +33,7 @@ class Lista{
         
         /* ----- Procedimientos ----- */
         
-        void insertar(Curso *curso);
+        void insertar(Curso *info);
         Curso* valorActual();
         bool listaVacia();
         bool haySiguiente();
@@ -42,6 +42,7 @@ class Lista{
         void primero();
         void ultimo();        
         void imprimir();
+        void imprimirResultadoID(int id);
         
         /* ----- Destructor ----- */
         

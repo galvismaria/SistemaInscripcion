@@ -20,6 +20,7 @@ class Cola{
 		/* ----- Constructores ----- */
 		
 		Cola();
+		Cola(Cola *cola);
 		
 		/* ----- Setters ----- */
 		

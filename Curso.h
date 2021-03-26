@@ -47,6 +47,8 @@ class Curso{
 		void mostrarListaAsignados();
 		void mostrarListaEspera();
 		void mostrarListaCandidatos();
+		void mostrarResultados();
+		void buscarEstudiante(string nombre);
 		
 		/* ----- Destructor ----- */
 		

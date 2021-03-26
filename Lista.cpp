@@ -18,7 +18,7 @@ bool Lista::hayActual(){
 	
 }
 
-void Lista::insertar( Curso *curso ){
+void Lista::insertar( Curso *info ){
 	
 	Nodo* temp;
 
@@ -26,14 +26,14 @@ void Lista::insertar( Curso *curso ){
     	
         principio = new Nodo();
         principio->siguiente = NULL;
-        principio->curso = curso;
+        principio->info = info;
         
     } else{
     	
         ultimo();
         actual->siguiente = new Nodo();
         actual->siguiente = actual->siguiente;
-        actual->siguiente->curso = curso;
+        actual->siguiente->info = info;
         
     }
 	
@@ -46,7 +46,7 @@ void Lista::siguiente(){
         actual = actual->siguiente;
         
 }
-    
+
 bool Lista::haySiguiente(){
 	
 	return ( actual->siguiente == NULL) ;
@@ -77,25 +77,44 @@ void Lista::ultimo(){
 
 Curso* Lista::valorActual(){
 	
-    return actual->curso;
+    return actual->info;
     
 }
 
-void Lista::imprimir() {
+void Lista::imprimirResultadoID( int id ){
 	
-   Nodo* aux;
-
-   aux = principio;
-   
-	while ( aux ) {
+	Nodo *aux;
+	
+	aux = principio;
+	
+	while ( aux ){
+			
+		if ( aux->info->getID() == id ){
+				
+			aux->info->mostrarResultados();
+				
+		}
 		
-		aux->curso->mostrarInfo();
-		cout << "\n";
 		aux = aux->siguiente;
-      
-   }
-   
-   cout << endl;
+		
+	}
+		
+}
+
+void Lista::imprimir(){
+	
+	Nodo *aux;
+	
+	aux = principio;
+	
+	while ( aux ){
+			
+		cout <<"\n\t"<< aux->info->listaMaterias( aux->info->getID() ) << " (" << aux->info->getID() <<")\n"; 
+		
+		aux = aux->siguiente;
+		
+	}
+		
 }
 
 Lista::~Lista(){
