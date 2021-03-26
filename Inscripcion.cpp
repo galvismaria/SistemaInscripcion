@@ -150,6 +150,36 @@ void Inscripcion::cargarEstudiantes(){
 	}
 }
 
+void Inscripcion::cargarInscripciones(){
+	
+	archivo.open("ListaInscribir.txt", ios::in);
+	
+    if ( archivo.is_open() ){
+    	
+		int cedula;
+		int materias[MAX_MATERIAS];
+		
+        while ( !archivo.eof() ){
+        	
+            archivo >> cedula >> materias[0] >> materias[1] >> materias[2] >> materias[3] >> materias[4] >> materias[5] >> materias[6] >> materias[7] >> materias[8] >> materias[9];
+            
+            if ( !archivo.eof() ){
+    
+            	cargarMateriasEstudiante(cedula, materias, MAX_MATERIAS);
+            	
+			} 
+        }
+        
+        archivo.close();
+        
+    } else {
+    	
+        cout<< "No se encontro el archivo."<< endl;
+	
+	}
+}
+
+
 void Inscripcion::cargarMateriasEstudiante( int cedula, int materias[], int n ){
 	
 	if ( !estudiantes->estaVacia() ){
@@ -193,6 +223,14 @@ void Inscripcion::mostrarCursos(){
 		cursos->imprimir();
 		
 	}
+	
+}
+
+void Inscripcion::mostrarCandidatos(){
+	
+	cursos->primero();
+	
+	cursos->valorActual()->mostrarListaCandidatos();
 	
 }
 
