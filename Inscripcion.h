@@ -13,8 +13,8 @@ class Inscripcion{
 		
 		/* ----- ATRIBUTOS ----- */
 		
-		Cola *estudiantes;
-		Lista *cursos;
+		Lista<Estudiante> *estudiantes;
+		Lista<Curso> *cursos;
 		fstream archivo;
 		
 	public:
@@ -27,8 +27,8 @@ class Inscripcion{
 		
 		/* ----- Getters ----- */
 	
-		Cola *getEstudiantes();
-		Lista *getCursos();
+		Lista<Estudiante> *getEstudiantes();
+		Lista<Curso> *getCursos();
 		
 		/* ----- Procedimientos ----- */
 		

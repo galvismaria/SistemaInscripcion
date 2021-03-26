@@ -2,18 +2,18 @@
 
 Inscripcion::Inscripcion(){
 	
-	estudiantes = new Cola();
-	cursos = new Lista();
+	estudiantes = new Lista<Estudiante>;
+	cursos = new Lista<Curso>();
 	
 }
 
-Cola* Inscripcion::getEstudiantes(){
+Lista<Estudiante>* Inscripcion::getEstudiantes(){
 	
 	return estudiantes;
 	
 }
 
-Lista* Inscripcion::getCursos(){
+Lista<Curso>* Inscripcion::getCursos(){
 	
 	return cursos;
 	
@@ -21,7 +21,7 @@ Lista* Inscripcion::getCursos(){
 
 void Inscripcion::ingresarEstudiantes( Estudiante *estudiante ){
 	
-	estudiantes->encolar( estudiante );
+	estudiantes->insertar( estudiante );
 	
 }
 
@@ -35,13 +35,14 @@ void Inscripcion::ingresarCurso( Curso *curso ){
 void Inscripcion::asignarCandidatos(){
 	
 	Estudiante *temp = new Estudiante();
-	Cola *colaAux = new Cola( estudiantes );
 	
 	int materias[MAX_MATERIAS];
+	
+	estudiantes->primero();
 
-	while ( !colaAux->estaVacia() ){
+	while ( !estudiantes->hayActual() ){
 		
-		temp = colaAux->desencolar();
+		temp = estudiantes->valorActual();
 		
 		temp->obtenerMaterias( materias );
 		
@@ -58,7 +59,6 @@ void Inscripcion::asignarCandidatos(){
 				}
 				
 				cursos->siguiente();
-			
 				
 			}
 			
@@ -136,7 +136,7 @@ void Inscripcion::cargarEstudiantes(){
             	string nombreCompleto = str1 + " " + str2;
 				
 				
-				estudiantes->encolar( new Estudiante(nombreCompleto, carrera, cedula, indice, nivel, creditos ) );
+				estudiantes->insertar( new Estudiante(nombreCompleto, carrera, cedula, indice, nivel, creditos ) );
 			} 
         }
         
@@ -181,29 +181,26 @@ void Inscripcion::cargarInscripciones(){
 
 void Inscripcion::cargarMateriasEstudiante( int cedula, int materias[], int n ){
 	
-	if ( !estudiantes->estaVacia() ){
-		
-		Nodo *temp = estudiantes->getInicio();
-		
-		while( temp ){
-			
-			if ( temp->getEstudiante()->getCedula() == cedula ){
-				
-				for ( int i = 0 ; i < n ; i++ ){
-					
-					temp->getEstudiante()->setMateria( materias[i], false, 0 );
-					
-				}
-
-			}
-			
-			temp = temp->getSiguiente();
-			
-		}
-		
-	}
+	estudiantes->primero();
 	
+	while( estudiantes->hayActual() ){
+			
+		if ( estudiantes->valorActual()->getCedula() == cedula ){
+				
+			for ( int i = 0 ; i < n ; i++ ){
+					
+				estudiantes->valorActual()->setMateria( materias[i], false, 0 );
+					
+			}
+
+		}
+			
+		estudiantes->siguiente();
+			
+	}
+		
 }
+	
 
 void Inscripcion::procesoInscripcion(){
 	
@@ -215,34 +212,6 @@ void Inscripcion::procesoInscripcion(){
 	
 }
 
-void Inscripcion::mostrarEstudiantes(){
-	
-	if ( !estudiantes->estaVacia() ){
-		
-		estudiantes->imprimir();
-		
-	}
-	
-}
-
-void Inscripcion::mostrarCursos(){
-	
-	if ( !estudiantes->estaVacia() ){
-		
-		cursos->imprimir();
-		
-	}
-	
-}
-
-void Inscripcion::mostrarCandidatos(){
-	
-	cursos->primero();
-	
-	cursos->valorActual()->mostrarListaCandidatos();
-	
-}
-
 void Inscripcion::listaCursos(){
 	
 	int opcion = 0;
@@ -251,7 +220,7 @@ void Inscripcion::listaCursos(){
 		
 		system("cls");
 		cout << "\n\n";
-		cursos->imprimir();
+		;
 		
 		cout << "\tIngrese el ID de la materia para visualizar los resultados del proceso de inscripcion\n";
 		cout << "\t(-1 para volver)\n\t\t";
@@ -259,7 +228,7 @@ void Inscripcion::listaCursos(){
 		cin >> opcion;
 		
 		system("cls");
-		cursos->imprimirResultadoID(opcion);
+		;
 		system("pause");
 		
 	}
@@ -289,7 +258,7 @@ void Inscripcion::buscarEstudiante(){
 		else {
 			
 			system("cls");
-			estudiantes->imprimirMateriasEstudiante(opcion);
+			
 			system("pause");
 		}
 		

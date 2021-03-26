@@ -1,24 +1,28 @@
 #include "Lista.h"
 
-Lista::Lista(){
+template <typename T>
+Lista<T>::Lista(){
 	
     principio = actual = NULL;
     
 }
 
-bool Lista::listaVacia(){
+template <typename T>
+bool Lista<T>::listaVacia(){
 	
     return principio == NULL;
     
 }
 
-bool Lista::hayActual(){
+template <typename T>
+bool Lista<T>::hayActual(){
 	
 	return actual != NULL;
 	
 }
 
-void Lista::insertar( Curso *info ){
+template <typename T>
+void Lista<T>::insertar( T *info ){
 	
 	Nodo* temp;
 
@@ -39,7 +43,8 @@ void Lista::insertar( Curso *info ){
 	
 }
 
-void Lista::siguiente(){
+template <typename T>
+void Lista<T>::siguiente(){
 	
     if ( actual )
     
@@ -47,19 +52,22 @@ void Lista::siguiente(){
         
 }
 
-bool Lista::haySiguiente(){
+template <typename T>
+bool Lista<T>::haySiguiente(){
 	
 	return ( actual->siguiente == NULL) ;
 	
 }
 
-void Lista::primero(){
+template <typename T>
+void Lista<T>::primero(){
 	
     actual = principio;
     
 }
 
-void Lista::ultimo(){
+template <typename T>
+void Lista<T>::ultimo(){
 	
     primero();
     
@@ -75,49 +83,15 @@ void Lista::ultimo(){
                 
 }
 
-Curso* Lista::valorActual(){
+template <typename T>
+T* Lista<T>::valorActual(){
 	
     return actual->info;
     
 }
 
-void Lista::imprimirResultadoID( int id ){
-	
-	Nodo *aux;
-	
-	aux = principio;
-	
-	while ( aux ){
-			
-		if ( aux->info->getID() == id ){
-				
-			aux->info->mostrarResultados();
-				
-		}
-		
-		aux = aux->siguiente;
-		
-	}
-		
-}
-
-void Lista::imprimir(){
-	
-	Nodo *aux;
-	
-	aux = principio;
-	
-	while ( aux ){
-			
-		cout <<"\n\t"<< aux->info->listaMaterias( aux->info->getID() ) << " (" << aux->info->getID() <<")\n"; 
-		
-		aux = aux->siguiente;
-		
-	}
-		
-}
-
-Lista::~Lista(){
+template <typename T>
+Lista<T>::~Lista(){
 	
     Nodo* aux;
 
@@ -131,3 +105,6 @@ Lista::~Lista(){
 
     actual = NULL;
 }
+
+template class Lista<Curso>;
+template class Lista<Estudiante|6>;

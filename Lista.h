@@ -5,6 +5,7 @@
 
 using namespace std;
 
+template <typename T>
 class Lista{
 	
     private:
@@ -15,7 +16,7 @@ class Lista{
     		
     		public:
     			
-    			Curso *info;
+    			T *info;
     			Nodo *siguiente;
     		
 		};
@@ -33,16 +34,14 @@ class Lista{
         
         /* ----- Procedimientos ----- */
         
-        void insertar(Curso *info);
-        Curso* valorActual();
+        void insertar(T *info);
+        T* valorActual();
         bool listaVacia();
         bool haySiguiente();
         bool hayActual();
         void siguiente();
         void primero();
         void ultimo();        
-        void imprimir();
-        void imprimirResultadoID(int id);
         
         /* ----- Destructor ----- */
         
