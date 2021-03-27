@@ -91,6 +91,39 @@ T* Lista<T>::valorActual(){
 }
 
 template <typename T>
+void Lista<T>::imprimir(){
+	
+	Nodo* aux = principio;
+	
+	while ( aux ){
+		
+		aux->info->mostrarInfo();
+		aux = aux->siguiente;
+	}
+	
+}
+
+template <typename T>
+T* Lista<T>::buscar( int info ){
+	
+	Nodo* aux = principio;
+	
+	while ( aux ){
+		
+		if ( aux->info->getInfo() == info ){
+			
+			return aux->info;
+			
+		}
+		
+		aux = aux->siguiente;
+	}
+	
+	return NULL;
+	
+}
+
+template <typename T>
 Lista<T>::~Lista(){
 	
     Nodo* aux;
@@ -107,4 +140,4 @@ Lista<T>::~Lista(){
 }
 
 template class Lista<Curso>;
-template class Lista<Estudiante|6>;
+template class Lista<Estudiante>;

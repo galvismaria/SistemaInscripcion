@@ -41,7 +41,9 @@ class Lista{
         bool hayActual();
         void siguiente();
         void primero();
-        void ultimo();        
+        void ultimo();
+		void imprimir();
+		T* buscar(int info);       
         
         /* ----- Destructor ----- */
         

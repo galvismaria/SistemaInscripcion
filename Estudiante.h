@@ -48,6 +48,7 @@ class Estudiante{
 		void setEstado(bool inscrito);
 		void setNMaterias(int nMaterias);
 		void setMateria(int id, bool asignado, int lugar);
+		void setMaterias(Estudiante *estudiante);
 		
 		/* ----- Getters ----- */
 		
@@ -57,6 +58,7 @@ class Estudiante{
 		int getNivel();
 		int getCreditos();
 		int getNMaterias();
+		int getInfo();
 		bool estaInscrito();
 		
 		/* ----- Procedimientos ----- */

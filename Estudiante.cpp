@@ -104,6 +104,25 @@ void Estudiante::setMateria( int id, bool asignado, int lugar ){
 	
 }
 
+void Estudiante::setMaterias( Estudiante *estudiante ){
+	
+	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
+		
+		for ( int j = 0 ; j < MAX_MATERIAS ; j++ ){
+			
+			if (  this->materias[i].id  == estudiante->materias[j].id ){
+			
+				this->materias[i].asignado = estudiante->materias[j].asignado;
+				this->materias[i].lugar = estudiante->materias[j].lugar;
+			
+			}
+			
+		}
+		
+	}
+	
+}
+
 string Estudiante::getNombre(){
 	
 	return nombre;
@@ -137,6 +156,12 @@ int Estudiante::getCreditos(){
 int Estudiante::getNMaterias(){
 	
 	return nMaterias;
+	
+}
+
+int Estudiante::getInfo(){
+	
+	return cedula;
 	
 }
 

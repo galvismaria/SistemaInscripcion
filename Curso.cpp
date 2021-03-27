@@ -28,6 +28,63 @@ int Curso::getID(){
 	
 }
 
+Cola* Curso::getListaAsignados(){
+	
+	if ( listaAsignados ){
+		
+		Cola *temp = new Cola ( listaAsignados );
+	
+		return temp;
+		
+	}
+	
+	else{
+		
+		return NULL;
+		
+	}
+	
+}
+
+Cola* Curso::getListaEspera(){
+	
+	if ( listaEspera ){
+		
+		Cola *temp = new Cola ( listaEspera );
+	
+		return temp;
+		
+	}
+	
+	else{
+		
+		return NULL;
+	}
+	
+}
+
+Cola* Curso::getCandidatos(){
+	
+	return candidatos;
+	
+}
+
+int Curso::getInfo(){
+	
+	return id;
+}
+
+int Curso::getEstudiantesInscritos(){
+	
+	return listaAsignados->getElementos();
+	
+}
+int Curso::getEstudiantesSinCupo(){
+	
+	return listaEspera->getElementos();
+	
+}
+
 bool Curso::hayCandidatos(){
 	
 	if ( !candidatos->estaVacia() ){
@@ -148,6 +205,12 @@ string Curso::listaMaterias( int id ){
 
 void Curso::mostrarInfo(){
 	
+	cout << "\t" << listaMaterias( this->getID() ) << " \n";
+	
+}
+
+void Curso::mostrarDetalles(){
+	
 	cout << "\tCupos: " << this->cupos << " \n";
 	cout << "\tTipo de prioridad: ";
 	
@@ -186,6 +249,10 @@ void Curso::mostrarListaAsignados(){
 		
 	}
 	
+	else{
+		cout << "No hay asignados";
+	}
+	
 }
 
 void Curso::mostrarListaEspera(){
@@ -195,6 +262,10 @@ void Curso::mostrarListaEspera(){
 		cout << "\t\t\t- En espera -" << " \n\n";
 		listaEspera->imprimir();
 		
+	}
+	
+	else{
+		cout << "Lista de espera vacia";
 	}
 	
 }
@@ -210,6 +281,10 @@ void Curso::mostrarListaCandidatos(){
 		
 	}
 	
+	else{
+		cout << "No hay candidatos";
+	}
+	
 }
 
 void Curso::mostrarResultados(){
@@ -218,6 +293,7 @@ void Curso::mostrarResultados(){
 	cout << "\t\t* * * " << listaMaterias( id ) << " * * *" << " \n\n";
 	mostrarInfo();
 	cout << "\n";
+	mostrarListaCandidatos();
 	mostrarListaAsignados();
 	mostrarListaEspera();
 	cout << "--------------------------------------------------------------------------" << " \n\n";

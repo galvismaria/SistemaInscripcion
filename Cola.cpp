@@ -66,7 +66,6 @@ void Cola::encolar( Estudiante *estudiante ){
 		
 		fin->setSiguiente( nuevo );
 		
-		
 	}
 	
 	fin = nuevo;

@@ -34,6 +34,12 @@ class Curso{
 		/* ----- Getters ----- */
 		
 		int getID();
+		Cola *getListaAsignados();
+		Cola *getListaEspera();
+		Cola *getCandidatos();
+		int getInfo();
+		int getEstudiantesInscritos();
+		int getEstudiantesSinCupo();
 		bool hayCandidatos();
 		bool hayAsignados();
 		
@@ -44,6 +50,7 @@ class Curso{
 		void ingresarCandidato(Estudiante *estudiante);
 		string listaMaterias( int id );
 		void mostrarInfo();
+		void mostrarDetalles();
 		void mostrarListaAsignados();
 		void mostrarListaEspera();
 		void mostrarListaCandidatos();

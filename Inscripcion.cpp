@@ -40,7 +40,7 @@ void Inscripcion::asignarCandidatos(){
 	
 	estudiantes->primero();
 
-	while ( !estudiantes->hayActual() ){
+	while ( estudiantes->hayActual() ){
 		
 		temp = estudiantes->valorActual();
 		
@@ -63,6 +63,8 @@ void Inscripcion::asignarCandidatos(){
 			}
 			
 		}
+		
+		estudiantes->siguiente();
 		
 	}
 	
@@ -99,7 +101,6 @@ void Inscripcion::cargarCursos(){
             archivo >> Mat >> id >> cupos >> prioridad;
             
             if (!archivo.eof()){
-
             	cursos->insertar( new Curso( id, cupos, prioridad ) );
             
             } 
@@ -200,6 +201,63 @@ void Inscripcion::cargarMateriasEstudiante( int cedula, int materias[], int n ){
 	}
 		
 }
+
+void Inscripcion::interseccionEstudiantes(){
+	
+	cursos->primero();
+	
+	while ( cursos->hayActual() ){
+		
+		Cola *tempAsignados = new Cola ( cursos->valorActual()->getListaAsignados() );
+		Cola *tempEspera = new Cola ( cursos->valorActual()->getListaEspera() );
+		
+		
+		while ( !tempAsignados->estaVacia() ){
+			
+			estudiantes->primero();
+			Estudiante *temp = tempAsignados->desencolar();
+			
+			while ( estudiantes->hayActual() ){
+				
+				if ( temp->getCedula() == estudiantes->valorActual()->getCedula() ){
+					
+					estudiantes->valorActual()->setMaterias( temp );
+					
+				
+				}
+					
+				estudiantes->siguiente();
+				
+		 	}
+			
+		}
+		
+		while ( !tempEspera->estaVacia() ){
+			
+			estudiantes->primero();
+			Estudiante *temp = tempAsignados->desencolar();
+			
+			while ( estudiantes->hayActual() ){
+				
+				if ( temp->getCedula() == estudiantes->valorActual()->getCedula() ){
+				
+					estudiantes->valorActual()->setMaterias( temp );
+				
+				}
+					
+				estudiantes->siguiente();
+				
+			}
+					
+		}
+	
+	cursos->siguiente();		
+		
+	}
+		
+}
+	
+
 	
 
 void Inscripcion::procesoInscripcion(){
@@ -209,6 +267,7 @@ void Inscripcion::procesoInscripcion(){
 	cargarInscripciones();
 	asignarCandidatos();
 	inscribirEstudiantes();
+	interseccionEstudiantes();
 	
 }
 
@@ -216,11 +275,13 @@ void Inscripcion::listaCursos(){
 	
 	int opcion = 0;
 	
+	Curso *aux;
+	
 	while ( opcion != -1 ){
 		
 		system("cls");
 		cout << "\n\n";
-		;
+		cursos->imprimir();
 		
 		cout << "\tIngrese el ID de la materia para visualizar los resultados del proceso de inscripcion\n";
 		cout << "\t(-1 para volver)\n\t\t";
@@ -228,7 +289,8 @@ void Inscripcion::listaCursos(){
 		cin >> opcion;
 		
 		system("cls");
-		;
+		aux = cursos->buscar(opcion);
+		aux->mostrarResultados();
 		system("pause");
 		
 	}
@@ -238,19 +300,20 @@ void Inscripcion::listaCursos(){
 void Inscripcion::buscarEstudiante(){
 	
 	bool flag = false;
-	string opcion;
+	int opcion;
+	Estudiante *estudiante;
 	
 	while ( !flag ){
 		
 		system("cls");
 		cout << "\n\n";
 		
-		cout << "\tIngrese el nombre del estudiante para consultar su informacion\n";
-		cout << "\t(Escriba 'salir' para volver)\n\t\t";
+		cout << "\tIngrese la cedula del estudiante para consultar su informacion\n";
+		cout << "\t(-1 para volver)\n\t\t";
 		
 		cin >> opcion;
 		
-		if ( opcion == "salir" ){
+		if ( opcion == -1 ){
 			
 			flag = true;
 			
@@ -258,7 +321,9 @@ void Inscripcion::buscarEstudiante(){
 		else {
 			
 			system("cls");
-			
+			estudiante = estudiantes->buscar( opcion );
+			estudiante->mostrarInfo();
+			estudiante->mostrarMaterias();
 			system("pause");
 		}
 		
@@ -266,16 +331,49 @@ void Inscripcion::buscarEstudiante(){
 	
 }
 
+void Inscripcion::contarSinCupo(){
+	
+	cursos->primero();
+	int n = 0;
+	
+	system("cls");
+	cout << "\n\n";
+	
+	cout << "\t-------------------------------------------" << " \n\n";
+	
+	while ( cursos->hayActual() ){
+		
+		cout << "\t" << cursos->valorActual()->listaMaterias( cursos->valorActual()->getID() );
+		cout << "\t\t( " << cursos->valorActual()->getEstudiantesSinCupo() << " )\n";
+		n = n + cursos->valorActual()->getEstudiantesSinCupo();
+		
+		cursos->siguiente();
+	}
+	
+	cout << "\n\tTotal: " << n << "\n";
+	
+	cout << "\t--------------------------------------------" << " \n\n";
+	system("pause");
+	
+}
+
 void Inscripcion::menuPrincipal(){
 	
 	while (true){
 		
+		system("cls");
+		cout << "\n\n";
+	
+		cout << "\t----------------------------------------------------------------------------------------------------" << " \n\n";
+		
 		cout << "\n\n\n\n\t\t\t\t* * * Simulacion de Proceso de Inscripcion * * *";
 	
-		cout << "\n\n\t\t1. Informacion de asignaduras" <<
+		cout << "\n\n\n\t\t1. Informacion de asignaduras" <<
 				"\n\n\t\t2. Informacion de estudiantes"<<
-				"\n\n\t\t3. Conteo de estudiantes sin cupo\n\n" <<
-				"\n\n\t\t4. Salir\n\n";
+				"\n\n\t\t3. Conteo de estudiantes sin cupo" <<
+				"\n\n\t\t4. Salir\n\n\n\n";
+				
+		cout << "\t----------------------------------------------------------------------------------------------------" << " \n\n";
 	
 		bool flag = false;
 		int opcion;
@@ -314,7 +412,7 @@ void Inscripcion::menuPrincipal(){
 				break;	
 				
 			case(3):
-				;
+				contarSinCupo();
 				break;
 			
 			case(4):
