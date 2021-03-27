@@ -2,6 +2,7 @@
 #define LISTA
 
 #include "Curso.h"
+#include "Estudiante.h"
 
 using namespace std;
 

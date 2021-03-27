@@ -24,7 +24,6 @@ class Estudiante{
 		float indice;
 		int nivel;
 		int creditos;
-		bool inscrito;
 		Materias materias[MAX_MATERIAS];
 		int nMaterias;
 		
@@ -45,7 +44,6 @@ class Estudiante{
 		void setIndice(float indice);
 		void setNivel(int nivel);
 		void setCreditos(int creditos);
-		void setEstado(bool inscrito);
 		void setNMaterias(int nMaterias);
 		void setMateria(int id, bool asignado, int lugar);
 		void setMaterias(Estudiante *estudiante);

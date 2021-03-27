@@ -8,7 +8,6 @@ Estudiante::Estudiante(){
 	indice = 0;
 	nivel = 0;
 	creditos = 0;
-	inscrito = false;
 	this->nMaterias = 0;
 	
 }
@@ -21,8 +20,15 @@ Estudiante::Estudiante( string nombre, string carrera, int cedula, float indice,
 	this->indice = indice;
 	this->nivel = nivel;
 	this->creditos = creditos;
-	this->inscrito = false;
 	this->nMaterias = 0;
+	
+	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
+		
+		this->materias[i].id = 0;
+		this->materias[i].lugar = 0;
+		this->materias[i].asignado = false;
+		
+	}
 	
 }
 
@@ -34,8 +40,14 @@ Estudiante::Estudiante( Estudiante *estudiante ){
 	this->indice = estudiante->indice;
 	this->nivel = estudiante->nivel;
 	this->creditos = estudiante->creditos;
-	this->inscrito = estudiante->inscrito;
 	this->nMaterias = estudiante->nMaterias;
+	
+	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
+		
+		this->materias[i] = estudiante->materias[i];
+		
+	}
+	
 	
 }
 
@@ -69,12 +81,6 @@ void Estudiante::setCreditos( int creditos ){
 	
 }
 
-void Estudiante::setEstado( bool inscrito ){
-	
-	this->inscrito = inscrito;
-	
-}
-
 void Estudiante::setNMaterias( int nMaterias ){
 	
 	this->nMaterias = nMaterias;
@@ -85,7 +91,7 @@ void Estudiante::setMateria( int id, bool asignado, int lugar ){
 	
 	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 		
-		if (  ( this->materias[i].id != 0 ) && this->materias[i].id  == id ){
+		if ( ( this->materias[i].id == id ) && id > 0){
 			
 			this->materias[i].asignado = asignado;
 			this->materias[i].lugar = lugar;
@@ -95,12 +101,18 @@ void Estudiante::setMateria( int id, bool asignado, int lugar ){
 		
 	}
 	
-	this->materias[nMaterias].id = id;
-	this->materias[nMaterias].asignado = asignado;
-	this->materias[nMaterias].lugar = lugar;
-	nMaterias++;
-	
-	
+	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
+		
+		if ( this->materias[i].id == 0 ){
+			
+			this->materias[i].id = id;
+			this->materias[i].asignado = asignado;
+			this->materias[i].lugar = lugar;
+			return;
+			
+		}
+		
+	}
 	
 }
 
@@ -110,7 +122,7 @@ void Estudiante::setMaterias( Estudiante *estudiante ){
 		
 		for ( int j = 0 ; j < MAX_MATERIAS ; j++ ){
 			
-			if (  this->materias[i].id  == estudiante->materias[j].id ){
+			if ( ( this->materias[i].id  == estudiante->materias[j].id ) && estudiante->materias[j].lugar > 0 ){
 			
 				this->materias[i].asignado = estudiante->materias[j].asignado;
 				this->materias[i].lugar = estudiante->materias[j].lugar;
@@ -165,15 +177,9 @@ int Estudiante::getInfo(){
 	
 }
 
-bool Estudiante::estaInscrito(){
-	
-	return inscrito;
-	
-}
-
 void Estudiante::obtenerMaterias( int arr[] ){
 	
-	for ( int i = 0 ; i < nMaterias ; i++ ){
+	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 		
 		arr[i] = materias[i].id;
 		
@@ -233,6 +239,7 @@ void Estudiante::mostrarInfo(){
 	cout << "\tNivel:\t" << this->nivel << " \n";
 	cout << "\tUC:\t" << this->creditos << " \n";
 	
+	
 }
 
 string Estudiante::listaMaterias( int id ){
@@ -257,9 +264,7 @@ string Estudiante::listaMaterias( int id ){
 
 void Estudiante::mostrarMaterias(){
 	
-	cout << "Nombre: " << this->nombre << " \n";
-	
-	for ( int i = 0 ; i < nMaterias ; i++ ){
+	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 		
 		if ( materias[i].id != 0 ){
 			

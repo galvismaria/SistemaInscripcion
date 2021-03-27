@@ -38,8 +38,8 @@ class Cola{
 		void encolar(Estudiante *estudiante);
 		Estudiante* desencolar();
 		void asignarPosiciones();
+		void actualizarMaterias();
 		void ordenarPrioridad(int caso);
-		void actualizarEstadoInscripcion(bool estado);
 		void imprimir();
 		void imprimirMateriasEstudiante(string nombre);
 		

@@ -135,26 +135,13 @@ void Cola::ordenarPrioridad( int caso ){
 void Cola::asignarPosiciones(){
 	
 	Nodo *aux = inicio;
-	int n = 0;
+	int n = 1;
 	
 	while ( aux ){
 		
-		n++;
 		aux->setPosicion( n );
 		aux = aux->getSiguiente();
-		
-	}
-	
-}
-
-void Cola::actualizarEstadoInscripcion( bool estado ){
-	
-	Nodo *aux = inicio;
-	
-	while ( aux ){
-		
-		aux->getEstudiante()->setEstado( estado );
-		aux= aux->getSiguiente();
+		n++;
 		
 	}
 	
@@ -169,7 +156,8 @@ void Cola::imprimir(){
 		aux = inicio;
 	
 		while ( aux ){
-		
+			
+			cout << "\t#" << aux->getPosicion() << "\n";
 			aux->getEstudiante()->mostrarInfo();
 			cout << "\n";
 			aux = aux->getSiguiente();

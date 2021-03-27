@@ -2,6 +2,7 @@
 #define CURSO
 
 #include "Cola.h"
+#include "Lista.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ class Curso{
 		
 		Curso();
 		Curso(int id, int cupos, int prioridad);
+		Curso(Curso *curso);
 		
 		/* ----- Setters ----- */
 		
@@ -56,6 +58,7 @@ class Curso{
 		void mostrarListaCandidatos();
 		void mostrarResultados();
 		void buscarEstudiante(string nombre);
+		void crearLista(Cola *cola);
 		
 		/* ----- Destructor ----- */
 		

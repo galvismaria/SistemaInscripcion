@@ -126,7 +126,6 @@ void Curso::generarListaAsignados(){
 		while ( listaAsignados->getElementos() < this->cupos && !candidatos->estaVacia()  ){
 		
 			listaAsignados->encolar ( candidatos->desencolar() );
-			listaAsignados->actualizarEstadoInscripcion( true );
 			listaAsignados->asignarPosiciones();
 		
 		}
@@ -134,7 +133,6 @@ void Curso::generarListaAsignados(){
 		while ( !candidatos->estaVacia() ){
 		
 			listaEspera->encolar ( candidatos->desencolar() );
-			listaEspera->actualizarEstadoInscripcion( false );
 			listaEspera->asignarPosiciones();
 		
 		}
@@ -154,7 +152,7 @@ void Curso::asignarMaterias(){
 		
 		while ( recorr ){
 			
-			recorr->getEstudiante()->setMateria( this->id, true, recorr->getPosicion() );
+			recorr->getEstudiante()->setMateria ( this->id, true, recorr->getPosicion() );
 			recorr = recorr->getSiguiente();
 			
 		}
@@ -168,7 +166,7 @@ void Curso::asignarMaterias(){
 		
 		while ( recorr ){
 			
-			recorr->getEstudiante()->setMateria( this->id, false, recorr->getPosicion() );
+			recorr->getEstudiante()->setMateria ( this->id, false, recorr->getPosicion() );
 			recorr = recorr->getSiguiente();
 			
 		}
@@ -300,7 +298,34 @@ void Curso::mostrarResultados(){
 	
 }
 
-
+void Curso::crearLista(Cola *cola){
+	
+	if ( !listaAsignados->estaVacia() ){
+		
+		Nodo *temp = listaAsignados->getInicio();
+	
+		while ( temp ){
+			
+			cola->encolar( new Estudiante( temp->getEstudiante() ) );
+			temp = temp->getSiguiente();
+		}
+		
+	}
+	
+	if ( !listaEspera->estaVacia() ){
+		
+		Nodo *temp = listaEspera->getInicio();
+		
+		while ( temp ){
+			
+			cola->encolar( new Estudiante( temp->getEstudiante() ) );
+			temp = temp->getSiguiente();
+			
+		}
+		
+	}
+	
+}
 
 Curso::~Curso(){
 	;

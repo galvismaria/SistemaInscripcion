@@ -46,7 +46,7 @@ void Inscripcion::asignarCandidatos(){
 		
 		temp->obtenerMaterias( materias );
 		
-		for ( int i = 0 ; i < temp->getNMaterias() ; i++ ){
+		for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 			
 			cursos->primero();
 			
@@ -136,8 +136,7 @@ void Inscripcion::cargarEstudiantes(){
             	string str2(apellido);
             	string nombreCompleto = str1 + " " + str2;
 				
-				
-				estudiantes->insertar( new Estudiante(nombreCompleto, carrera, cedula, indice, nivel, creditos ) );
+				estudiantes->insertar( new Estudiante ( nombreCompleto, carrera, cedula, indice, nivel, creditos ) );
 			} 
         }
         
@@ -208,50 +207,30 @@ void Inscripcion::interseccionEstudiantes(){
 	
 	while ( cursos->hayActual() ){
 		
-		Cola *tempAsignados = new Cola ( cursos->valorActual()->getListaAsignados() );
-		Cola *tempEspera = new Cola ( cursos->valorActual()->getListaEspera() );
+		Cola *colaTemp = new Cola();
+		cursos->valorActual()->crearLista ( colaTemp );
 		
-		
-		while ( !tempAsignados->estaVacia() ){
+		while ( !colaTemp->estaVacia() ){
 			
 			estudiantes->primero();
-			Estudiante *temp = tempAsignados->desencolar();
+			Estudiante *temp = colaTemp->desencolar();
 			
 			while ( estudiantes->hayActual() ){
 				
 				if ( temp->getCedula() == estudiantes->valorActual()->getCedula() ){
 					
 					estudiantes->valorActual()->setMaterias( temp );
-					
 				
 				}
 					
 				estudiantes->siguiente();
 				
 		 	}
+		 	
 			
 		}
 		
-		while ( !tempEspera->estaVacia() ){
-			
-			estudiantes->primero();
-			Estudiante *temp = tempAsignados->desencolar();
-			
-			while ( estudiantes->hayActual() ){
-				
-				if ( temp->getCedula() == estudiantes->valorActual()->getCedula() ){
-				
-					estudiantes->valorActual()->setMaterias( temp );
-				
-				}
-					
-				estudiantes->siguiente();
-				
-			}
-					
-		}
-	
-	cursos->siguiente();		
+		cursos->siguiente();		
 		
 	}
 		
