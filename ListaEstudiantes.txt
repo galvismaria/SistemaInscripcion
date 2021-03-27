@@ -6,3 +6,5 @@ Vannesa  Moreno     27845266  ing        6        8       12
 Oliver   Messi      25124562  ing        5        4       24
 Emily    Rodriguez  24851522  ing        8        3       20
 Camilo   Cstilla    23598421  ing        9        1       14
+Anton    Ego        28569351  ing        1        4       22
+Veronica Veronica   27845126  ing        9        1       14
