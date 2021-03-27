@@ -99,11 +99,10 @@ void Inscripcion::cargarCursos(){
         while( !archivo.eof() ){
         	
             archivo >> Mat >> id >> cupos >> prioridad;
+    
+            cursos->insertar( new Curso( id, cupos, prioridad ) );
             
-            if (!archivo.eof()){
-            	cursos->insertar( new Curso( id, cupos, prioridad ) );
             
-            } 
         }
         
         archivo.close();
@@ -130,14 +129,12 @@ void Inscripcion::cargarEstudiantes(){
         	
             archivo >> nombre >> apellido >> cedula >> carrera >> indice >> nivel >> creditos;
             
-            if ( !archivo.eof() ){
-            	
-            	string str1(nombre);
-            	string str2(apellido);
-            	string nombreCompleto = str1 + " " + str2;
+            string str1(nombre);
+            string str2(apellido);
+            string nombreCompleto = str1 + " " + str2;
 				
-				estudiantes->insertar( new Estudiante ( nombreCompleto, carrera, cedula, indice, nivel, creditos ) );
-			} 
+			estudiantes->insertar( new Estudiante ( nombreCompleto, carrera, cedula, indice, nivel, creditos ) );
+			
         }
         
         archivo.close();
@@ -162,11 +159,8 @@ void Inscripcion::cargarInscripciones(){
         	
             archivo >> cedula >> materias[0] >> materias[1] >> materias[2] >> materias[3] >> materias[4] >> materias[5] >> materias[6] >> materias[7] >> materias[8] >> materias[9];
             
-            if ( !archivo.eof() ){
-    
-            	cargarMateriasEstudiante(cedula, materias, MAX_MATERIAS);
-            	
-			} 
+            cargarMateriasEstudiante(cedula, materias, MAX_MATERIAS);  
+
         }
         
         archivo.close();
