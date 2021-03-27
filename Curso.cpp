@@ -292,7 +292,6 @@ void Curso::mostrarResultados(){
 	cout << "\t\t* * * " << listaMaterias( id ) << " * * *" << " \n\n";
 	mostrarInfo();
 	cout << "\n";
-	mostrarListaCandidatos();
 	mostrarListaAsignados();
 	mostrarListaEspera();
 	cout << "--------------------------------------------------------------------------" << " \n\n";
