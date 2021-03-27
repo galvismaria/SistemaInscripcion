@@ -203,7 +203,8 @@ string Curso::listaMaterias( int id ){
 
 void Curso::mostrarInfo(){
 	
-	cout << "\t" << listaMaterias( this->getID() ) << " \n";
+	cout << "\t(ID: " << this->getID() << ") " << listaMaterias( this->getID() ) << " \n";
+	cout << " \n";
 	
 }
 
