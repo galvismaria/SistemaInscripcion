@@ -429,6 +429,40 @@ void Inscripcion::menuPrincipal(){
 		
 }
 
+void Inscripcion::IngresarEstudiantes(){
+	
+	 Guardar.open("log.txt", ios::app);
+
+	int cedula, indice, numero_credito, nivel;
+	char Nombre[20];
+	char apellido[20];
+	char carrera[20];
+
+   cout<<"Por favor, ingrese su nombre: ";
+	cin >>Nombre;
+	
+	cout<<"Por favor, ingrese su apellido: ";
+	cin >>apellido;
+	
+	cout<<"Por favor, ingrese su cedula: ";
+	cin >>cedula;
+	
+	cout<<"Por favor, ingrese su carrera: ";
+	cin >>carrera;
+	
+	cout<<"Por favor, ingrese su indice academico: ";
+	cin >>indice;
+	
+	cout<<"Por favor, ingrese su nivel: ";
+	cin >>nivel;
+	
+	cout<<"Por favor, ingrese su numero de credito: ";
+	cin >>numero_credito;
+	
+	Guardar<<Nombre<<"  "<<apellido<<"  "<<cedula<<"  "<< carrera<<"        "<<indice<<"        "<<nivel<<"       "<<numero_credito<<endl;
+
+}
+
 void Inscripcion::salir(){
 	
 	exit(0);
