@@ -194,7 +194,7 @@ void Curso::mostrarListaAsignados(){
 	}
 	
 	else{
-		cout << "No hay asignados";
+		cout << "\tNo hay estudiantes asignados\n\n";
 	}
 	
 }
@@ -209,7 +209,7 @@ void Curso::mostrarListaEspera(){
 	}
 	
 	else{
-		cout << "Lista de espera vacia";
+		cout << "\tNo hay estudiantes en lista de espera\n\n";
 	}
 	
 }
@@ -226,20 +226,20 @@ void Curso::mostrarListaCandidatos(){
 	}
 	
 	else{
-		cout << "No hay candidatos";
+		cout << "\tNo hay estudiantes candidatos\n\n";
 	}
 	
 }
 
 void Curso::mostrarResultados(){
 	
-	cout << "--------------------------------------------------------------------------" << " \n\n";
+	cout << "\t--------------------------------------------------------------------------" << " \n\n";
 	cout << "\t\t* * * " << listaMaterias( id ) << " * * *" << " \n\n";
 	mostrarInfo();
 	cout << "\n";
 	mostrarListaAsignados();
 	mostrarListaEspera();
-	cout << "--------------------------------------------------------------------------" << " \n\n";
+	cout << "\t--------------------------------------------------------------------------" << " \n\n";
 	
 }
 
@@ -273,10 +273,5 @@ void Curso::crearLista(Cola *cola){
 }
 
 Curso::~Curso(){
-	delete &id;
-	delete &cupos;
-	delete &prioridad;
-	delete [] listaAsignados;
-	delete [] listaEspera;
-	delete [] candidatos;
+	;
 }

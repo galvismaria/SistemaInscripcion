@@ -225,7 +225,6 @@ void Estudiante::mostrarInfo(){
 	cout << "\tNivel:\t" << this->nivel << " \n";
 	cout << "\tUC:\t" << this->creditos << " \n";
 	
-	
 }
 
 string Estudiante::listaMaterias( int id ){
@@ -250,6 +249,8 @@ string Estudiante::listaMaterias( int id ){
 
 void Estudiante::mostrarMaterias(){
 	
+	cout << "\n\t--------------------------------------------" << " \n";
+	
 	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 		
 		if ( materias[i].id != 0 ){
@@ -269,16 +270,12 @@ void Estudiante::mostrarMaterias(){
 		
 	}
 	
+	cout << "\t--------------------------------------------" << " \n\n";
+	
 }
 
 Estudiante::~Estudiante(){
 	
-	delete &nombre;
-	delete &carrera;
-	delete &cedula;	
-	delete &indice;
-	delete &nivel;
-	delete &creditos;
-	delete &materias;
+	;
 	
 }

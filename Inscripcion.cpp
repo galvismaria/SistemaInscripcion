@@ -24,7 +24,6 @@ void Inscripcion::cargarCursos(){
     
             cursos->insertar( new Curso( id, cupos, prioridad ) );
             
-            
         }
         
         archivo.close();
@@ -231,25 +230,52 @@ void Inscripcion::procesoInscripcion(){
 
 void Inscripcion::listaCursos(){
 	
+	bool flag = false;
 	int opcion = 0;
+	Curso *curso;
 	
-	Curso *aux;
-	
-	while ( opcion != -1 ){
+	while ( !flag ){
 		
 		system("cls");
 		cout << "\n\n";
 		cursos->imprimir();
 		
 		cout << "\tIngrese el ID de la materia para visualizar los resultados del proceso de inscripcion\n";
-		cout << "\t(-1 para volver)\n\t\t";
+		cout << "\t(-1 para volver)\n\t";
 		
-		cin >> opcion;
 		
-		system("cls");
-		aux = cursos->buscar(opcion);
-		aux->mostrarResultados();
-		system("pause");
+		while ( true ) {
+			
+			cin >> opcion;
+			
+			if ( opcion == -1 ){
+			
+				flag = true;
+				break;
+			
+			}
+			
+			curso = cursos->buscar(opcion);
+			
+			if ( curso ){
+				
+				system("cls");
+				cout << "\n\n";
+				curso->mostrarResultados();
+				system("pause");
+				flag = false;
+				break;
+				
+			}
+				
+			else{
+			
+				cout << "\tEl ID ingresado no corresponde a ningun curso\n\t";
+				cin.clear();
+				cin.ignore(200, '\n');
+				
+			}
+		}
 		
 	}
 	
@@ -258,7 +284,7 @@ void Inscripcion::listaCursos(){
 void Inscripcion::buscarEstudiante(){
 	
 	bool flag = false;
-	int opcion;
+	int opcion = 0;
 	Estudiante *estudiante;
 	
 	while ( !flag ){
@@ -267,22 +293,41 @@ void Inscripcion::buscarEstudiante(){
 		cout << "\n\n";
 		
 		cout << "\tIngrese la cedula del estudiante para consultar su informacion\n";
-		cout << "\t(-1 para volver)\n\t\t";
+		cout << "\t(-1 para volver)\n\t";
 		
-		cin >> opcion;
 		
-		if ( opcion == -1 ){
+		while ( true ) {
 			
-			flag = true;
+			cin >> opcion;
 			
-		}
-		else {
+			if ( opcion == -1 ){
 			
-			system("cls");
+				flag = true;
+				break;
+			
+			}
+			
 			estudiante = estudiantes->buscar( opcion );
-			estudiante->mostrarInfo();
-			estudiante->mostrarMaterias();
-			system("pause");
+			
+			if ( estudiante ){
+				
+				system("cls");
+				cout << "\n\n";
+				estudiante->mostrarInfo();
+				estudiante->mostrarMaterias();
+				system("pause");
+				flag = false;
+				break;
+				
+			}
+				
+			else{
+			
+				cout << "\tLa cedula ingresada no corresponde a ningun estudiante\n\t";
+				cin.clear();
+				cin.ignore(200, '\n');
+				
+			}
 		}
 		
 	}
@@ -331,7 +376,7 @@ void Inscripcion::menuPrincipal(){
 				"\n\n\t\t3. Conteo de estudiantes sin cupo" <<
 				"\n\n\t\t4. Salir\n\n\n\n";
 				
-		cout << "\t----------------------------------------------------------------------------------------------------" << " \n\n";
+		cout << "\t----------------------------------------------------------------------------------------------------" << " \n\n\t\t";
 	
 		bool flag = false;
 		int opcion;
@@ -391,7 +436,5 @@ void Inscripcion::salir(){
 }
 
 Inscripcion::~Inscripcion(){
-	delete [] estudiantes;
-	delete [] cursos;
-	delete &archivo;
+	;
 }

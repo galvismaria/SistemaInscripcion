@@ -70,8 +70,6 @@ int Nodo::getPosicion(){
 
 Nodo::~Nodo(){
 	
-	delete [] estudiante;
-	delete [] siguiente;
-	delete &posicion;
+	;
 	
 }

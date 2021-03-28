@@ -149,11 +149,6 @@ void Cola::imprimir(){
 		
 	}
 	
-	else{
-		
-		cout << "Cola vacia";
-	}
-	
 }
 
 void Cola::imprimirMateriasEstudiante(string nombre){
@@ -179,12 +174,6 @@ void Cola::imprimirMateriasEstudiante(string nombre){
 		
 	}
 	
-	else {
-		
-		cout << "\nNo hay materias\n";
-		
-	}
-	
 }
 
 Cola::~Cola(){
@@ -194,4 +183,5 @@ Cola::~Cola(){
 		desencolar();
 		
 	}
+	
 }
