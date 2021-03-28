@@ -21,7 +21,7 @@ class Inscripcion{
 		Lista<Estudiante> *estudiantes;			// Lista de estudiantes que participar�n en el proceso de inscripci�n
 		Lista<Curso> *cursos;					// Lista de cursos ofertados durante el proceso de inscripci�n
 		fstream archivo;						// Atributo para manejar la lectura/escrito de archivos de texto
-		ofstream Guardar;                        //Atributi para manejar la lectura/escrito de archivos de texto
+		ofstream guardar;                        //Atributi para manejar la lectura/escrito de archivos de texto
 		
 	public:
 		
@@ -71,11 +71,13 @@ class Inscripcion{
 																				
 		void contarSinCupo();													// Muestra los estudiantes sin cupo para cada materia y global
 		
+		void registrarDatos();
+		
 		void menuPrincipal();													// Muestra el men� principal del programa
 		
 		void salir();															// Finaliza el programa
 
-		void IngresarEstudiantes();
+		void ingresarEstudiantes();
 		
 		/* ----- Destructor ----- */
 		

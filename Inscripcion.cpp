@@ -93,6 +93,87 @@ void Inscripcion::cargarInscripciones(){
 	}
 }
 
+void Inscripcion::ingresarEstudiantes(){
+	
+	system("cls");
+	cout << "\n\n";
+	
+	guardar.open("ListaEstudiantes.txt", ios::app);
+
+	int cedula, indice, numero_credito, nivel;
+	char nombre[20];
+	char apellido[20];
+	char carrera[20];
+	int materias[MAX_MATERIAS];
+	int temp;
+
+   	cout<<"\tNombre: ";
+	cin >>nombre;
+	
+	cout<<"\tApellido: ";
+	cin >>apellido;
+	
+	cout<<"\tCedula: ";
+	cin >>cedula;
+	
+	cout<<"\tCarrera: ";
+	cin >>carrera;
+	
+	cout<<"\tIndice academico: ";
+	cin >>indice;
+	
+	cout<<"\tNivel: ";
+	cin >>nivel;
+	
+	cout<<"\tCreditos aprobados: ";
+	cin >>numero_credito;
+	
+	guardar<<"\n"<<nombre<<"  "<<apellido<<"  "<<cedula<<"  "<< carrera<<"        "<<indice<<"        "<<nivel<<"       "<<numero_credito;
+	guardar.close();
+	
+	system("cls");
+	cout << "\n\n";
+	
+	guardar.open("ListaInscribir.txt", ios::app);
+	
+	cursos->imprimir();
+	
+	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
+		
+		materias[i] = 0;
+		
+	}
+		
+	cout << "\tIngrese el ID de la materia que desea inscribirn\n";
+	cout <<	"\t(-1 para terminar)\n\t";
+	
+	
+	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
+		
+		cin >> temp;
+		
+		if ( temp == -1 ){
+			
+			break;
+			
+		}
+		
+		else{
+			
+			materias[i] = temp;
+			
+		}
+		
+	}
+
+	guardar <<"\n"<< cedula <<"  " << materias[0] <<"  " << materias[1] <<"  " << materias[2] <<"  " << materias[3] <<"  " << materias[4] <<"  " << materias[5] <<"  " << materias[6] <<"  " << materias[7] <<"  " << materias[8] <<"  " << materias[9];
+	
+	guardar.close();
+	
+	system("cls");
+
+}
+
 
 void Inscripcion::cargarMateriasEstudiante( int cedula, int materias[], int n ){
 	
@@ -213,10 +294,8 @@ void Inscripcion::interseccionEstudiantes(){
 	}
 		
 }
-	
 
 	
-
 void Inscripcion::procesoInscripcion(){
 	
 	cargarCursos();
@@ -227,6 +306,7 @@ void Inscripcion::procesoInscripcion(){
 	interseccionEstudiantes();
 	
 }
+
 
 void Inscripcion::listaCursos(){
 	
@@ -360,6 +440,64 @@ void Inscripcion::contarSinCupo(){
 	
 }
 
+void Inscripcion::registrarDatos(){
+	
+	while(true){
+		
+		system("cls");
+		cout << "\n\n";
+		
+		cout << "\t-------------------------------------------" << " \n\n";
+	
+		cout << "\n\n\n\t\t1. Registrar estudiante" <<
+				"\n\n\t\t2. Registrar asignatura" <<
+				"\n\n\t\t3. Regresar";
+	
+		cout << "\t-------------------------------------------" << " \n\n\t\t";	
+	
+		bool flag = false;
+		int opcion;
+	
+		while ( !flag ) {
+			
+			cin >> opcion;
+			
+			if ( (opcion >= 1) && (opcion <= 3) ){
+			
+				flag = true;
+			
+			}
+				
+			else{
+			
+				cout << "Error, intente de nuevo.\n";
+				cin.clear();
+				cin.ignore(200, '\n');
+				
+			}
+		}
+	
+		switch(opcion){
+		
+			case 1:
+				
+				ingresarEstudiantes();
+				break;
+				
+			case 2:
+				//ingresarMaterias();
+				break;
+				
+			case 3:
+			
+				return;
+				
+		}
+		
+	}
+	
+}
+
 void Inscripcion::menuPrincipal(){
 	
 	while (true){
@@ -374,7 +512,8 @@ void Inscripcion::menuPrincipal(){
 		cout << "\n\n\n\t\t1. Informacion de asignaduras" <<
 				"\n\n\t\t2. Informacion de estudiantes"<<
 				"\n\n\t\t3. Conteo de estudiantes sin cupo" <<
-				"\n\n\t\t4. Salir\n\n\n\n";
+				"\n\n\t\t4. Registro de datos" <<
+				"\n\n\t\t5. Salir\n\n\n\n";
 				
 		cout << "\t----------------------------------------------------------------------------------------------------" << " \n\n\t\t";
 	
@@ -385,7 +524,7 @@ void Inscripcion::menuPrincipal(){
 			
 			cin >> opcion;
 			
-			if ( (opcion >= 1) && (opcion <= 4) ){
+			if ( (opcion >= 1) && (opcion <= 5) ){
 			
 				flag = true;
 			
@@ -415,52 +554,26 @@ void Inscripcion::menuPrincipal(){
 				break;	
 				
 			case(3):
+				
 				contarSinCupo();
 				break;
-			
+				
 			case(4):
+				
+				registrarDatos();
+				break;
+			
+			case(5):
+				
 				salir();			
 				
 			default:
+				
 				break;
 		}
 		
 	}
 		
-}
-
-void Inscripcion::IngresarEstudiantes(){
-	
-	 Guardar.open("log.txt", ios::app);
-
-	int cedula, indice, numero_credito, nivel;
-	char Nombre[20];
-	char apellido[20];
-	char carrera[20];
-
-   cout<<"Por favor, ingrese su nombre: ";
-	cin >>Nombre;
-	
-	cout<<"Por favor, ingrese su apellido: ";
-	cin >>apellido;
-	
-	cout<<"Por favor, ingrese su cedula: ";
-	cin >>cedula;
-	
-	cout<<"Por favor, ingrese su carrera: ";
-	cin >>carrera;
-	
-	cout<<"Por favor, ingrese su indice academico: ";
-	cin >>indice;
-	
-	cout<<"Por favor, ingrese su nivel: ";
-	cin >>nivel;
-	
-	cout<<"Por favor, ingrese su numero de credito: ";
-	cin >>numero_credito;
-	
-	Guardar<<Nombre<<"  "<<apellido<<"  "<<cedula<<"  "<< carrera<<"        "<<indice<<"        "<<nivel<<"       "<<numero_credito<<endl;
-
 }
 
 void Inscripcion::salir(){
