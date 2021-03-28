@@ -16,7 +16,7 @@ void Inscripcion::cargarCursos(){
     	int id;
     	int prioridad;
         int cupos;
-        char Mat[30];
+        string Mat;
         
         while( !archivo.eof() ){
         	
@@ -41,18 +41,16 @@ void Inscripcion::cargarEstudiantes(){
 	
     if ( archivo.is_open() ){
     	
-		char nombre[10];
-		char apellido[10];
-		char carrera[12];
+		string nombre;
+		string apellido;
+		string carrera;
 		int cedula, indice, nivel, creditos;
 		
         while ( !archivo.eof() ){
         	
             archivo >> nombre >> apellido >> cedula >> carrera >> indice >> nivel >> creditos;
             
-            string str1(nombre);
-            string str2(apellido);
-            string nombreCompleto = str1 + " " + str2;
+            string nombreCompleto = nombre + " " + apellido;
 				
 			estudiantes->insertar( new Estudiante ( nombreCompleto, carrera, cedula, indice, nivel, creditos ) );
 			
@@ -101,9 +99,9 @@ void Inscripcion::ingresarEstudiantes(){
 	guardar.open("ListaEstudiantes.txt", ios::app);
 
 	int cedula, indice, numero_credito, nivel;
-	char nombre[20];
-	char apellido[20];
-	char carrera[20];
+	string nombre;
+	string apellido;
+	string carrera;
 	int materias[MAX_MATERIAS];
 	int temp;
 
