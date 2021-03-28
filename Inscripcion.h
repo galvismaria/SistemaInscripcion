@@ -8,7 +8,7 @@ using namespace std;
 
 /*
 	
-		Clase que implementa el proceso de inscripciï¿½n.
+		Clase que implementa el proceso de inscripcion.
 	
 */
 
@@ -18,31 +18,31 @@ class Inscripcion{
 		
 		/* ----- ATRIBUTOS ----- */
 		
-		Lista<Estudiante> *estudiantes;			// Lista de estudiantes que participarï¿½n en el proceso de inscripciï¿½n
-		Lista<Curso> *cursos;					// Lista de cursos ofertados durante el proceso de inscripciï¿½n
+		Lista<Estudiante> *estudiantes;			// Lista de estudiantes que participaran en el proceso de inscripcion
+		Lista<Curso> *cursos;					// Lista de cursos ofertados durante el proceso de inscripcion
 		fstream archivo;						// Atributo para manejar la lectura de archivos de texto
 		ofstream guardar;                       // Atributo para manejar la escritura de archivos de texto
 		
 	public:
 		
-		/* ----- Mï¿½TODOS ----- */
+		/* ----- METODOS ----- */
 		
 		/* ----- Constructores ----- */
 		
-		Inscripcion();							// Constructor sin parï¿½metros -> Inicia el proceso de inscripciï¿½n
+		Inscripcion();							// Constructor sin parametros -> Inicia el proceso de inscripcion
 		
 		/* ----- Procedimientos ----- */
 		
-		void cargarCursos();													// Lee un archivo de texto con la informaciï¿½n referente a los cursos
-																				// y los aï¿½ade a la lista de cursos ofertados
+		void cargarCursos();													// Lee un archivo de texto con la informacion referente a los cursos
+																				// y los añade a la lista de cursos ofertados
 																				
-		void cargarEstudiantes();												// Lee un archivo de texto con la informaciï¿½n referente a los estudiantes
-																				// y los aï¿½ade a la lista de estudiantes que participarï¿½n en las inscripciones
+		void cargarEstudiantes();												// Lee un archivo de texto con la informacion referente a los estudiantes
+																				// y los añade a la lista de estudiantes que participaron en las inscripciones
 																				
-		void cargarInscripciones();												// Lee un archivo de texto con la informaciï¿½n de las materias que cada estudiante quiere inscribir
-																				// y actualiza el listado de estudiantes aï¿½adiendo estas materias 
+		void cargarInscripciones();												// Lee un archivo de texto con la informacion de las materias que cada estudiante quiere inscribir
+																				// y actualiza el listado de estudiantes añadiendo estas materias 
 																				
-		void cargarMateriasEstudiante( int cedula, int materias[], int n );		// Funciï¿½n que recorre la lista de estudiantes y aï¿½ade las materias que 
+		void cargarMateriasEstudiante(int cedula, int materias[], int n);		// Funcion que recorre la lista de estudiantes y añade las materias que 
 																				// cada estudiante quiere inscribir
 		
 		void ingresarEstudiantes();												// Función que permite registrar estudiantes nuevos para el proceso de inscripción
@@ -54,30 +54,30 @@ class Inscripcion{
 		void ingresarCurso(Curso *curso);										// Ingresa un curso al listado de cursos
 		
 		void asignarCandidatos();												// Asigna los candidatos para cada materia,
-																				// segï¿½n las materias que cada estudiante quiere inscribir
+																				// segun las materias que cada estudiante quiere inscribir
 		
-		void inscribirEstudiantes();											// Recorre la lista de cursos y llama a la funciï¿½n que genera
+		void inscribirEstudiantes();											// Recorre la lista de cursos y llama a la funcion que genera
 																				// las listas de estudiantes asignados y en lista de espera
 		
-		void interseccionEstudiantes();											// Una vez realizado el proceso de inscripciï¿½n, se usa esta funciï¿½n
+		void interseccionEstudiantes();											// Una vez realizado el proceso de inscripcion, se usa esta funcion
 																				// para recorrer las colas de asignados y en espera de cada curso
 																				// y actualizar la lista de estudiantes con los resultados de las inscripciones.
 																				// Es decir, que el listado de materias de cada estudiante se actualiza
 																				// con el estado de inscrito o en espera, y el lugar que ocupa en la cola respectiva
 		
-		void procesoInscripcion();												// Funciï¿½n que llama a las funciones para llevar a cabo las inscripciones
+		void procesoInscripcion();												// Funcion que llama a las funciones para llevar a cabo las inscripciones
 		
 		void listaCursos();														// Muestra la lista de cursos ofertados, y recibe como entrada la ID de un curso
-																				// Segï¿½n esta entrada, se muestran los resultados para la materia indicada
+																				// Segun esta entrada, se muestran los resultados para la materia indicada
 																				
 		void buscarEstudiante();												// Recibe como entrada la cedula de un estudiante y muestra
-																				// el estado de su inscripciï¿½n
+																				// el estado de su inscripcion
 																				
 		void contarSinCupo();													// Muestra los estudiantes sin cupo para cada materia y global
 		
 		void registrarDatos();
 		
-		void menuPrincipal();													// Muestra el menï¿½ principal del programa
+		void menuPrincipal();													// Muestra el menu principal del programa
 		
 		void salir();															// Finaliza el programa
 		

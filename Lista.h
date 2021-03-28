@@ -61,6 +61,8 @@ class Lista{
 		void imprimir();				// Imprime la información guardada en el nodo
 		
 		T* buscar(int info);       		// Busca un nodo según el dato que se pase como parámetro
+										// Si se trata de una lista de estudiantes recibe una cédula como parámetro,
+										// y si se trata de una lista de cursos recibe un ID de materia como parámetro
         
         /* ----- Destructor ----- */
         
