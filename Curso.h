@@ -6,18 +6,24 @@
 
 using namespace std;
 
+/*
+
+		Clase que representa un curso que se oferta durante el proceso de inscripción.
+
+*/
+
 class Curso{
 	
 	private:
 		
 		/* ----- ATRIBUTOS ----- */
 		
-		int id;
-		int cupos;
-		int prioridad;
-		Cola *listaAsignados;
-		Cola *listaEspera;
-		Cola *candidatos;
+		int id;														// ID que representa a la materia
+		int cupos;													// Cantidad de cupos disponibles para la materia
+		int prioridad;												// Número que representa el tipo de prioridad que tendrá la materia durante el proceso de inscripción
+		Cola *listaAsignados;										// Cola donde ingresarán los estudiantes asignados a la materia 
+		Cola *listaEspera;											// Cola donde ingresarán los estudiantes en espera a la materia
+		Cola *candidatos;											// Cola donde ingresarán los candidatos a la materia
 		
 	public:
 		
@@ -25,44 +31,52 @@ class Curso{
 		
 		/* ----- Constructores ----- */
 		
-		Curso();
-		Curso(int id, int cupos, int prioridad);
-		Curso(Curso *curso);
+		Curso();													// Constructor sin parámetros -> Crea un curso sin información detallada
+		Curso(int id, int cupos, int prioridad);					// Constructor con parámetros -> Crea un curso con su ID, cantidad de cupos y tipo de prioridad
 		
 		/* ----- Setters ----- */
 		
-		;
+		void setID(int id);
+		void setCupos(int cupos);
+		void setPrioridad(int prioridad);
 		
 		/* ----- Getters ----- */
 		
 		int getID();
-		Cola *getListaAsignados();
-		Cola *getListaEspera();
-		Cola *getCandidatos();
 		int getInfo();
 		int getEstudiantesInscritos();
 		int getEstudiantesSinCupo();
-		bool hayCandidatos();
-		bool hayAsignados();
 		
 		/* ----- Procedimientos ----- */
 		
-		void generarListaAsignados();
-		void asignarMaterias();
-		void ingresarCandidato(Estudiante *estudiante);
-		string listaMaterias( int id );
-		void mostrarInfo();
-		void mostrarDetalles();
-		void mostrarListaAsignados();
-		void mostrarListaEspera();
-		void mostrarListaCandidatos();
-		void mostrarResultados();
-		void buscarEstudiante(string nombre);
-		void crearLista(Cola *cola);
+		void generarListaAsignados();								// Genera la lista de estudiantes asignados para cada materia, según la cantidad de cupos disponibles
+																	// En caso de que se acaben los cupos y todavía hayan estudiantes candidatos, pasarán a la lista de espera
+		
+		void asignarMaterias();										// Recorre las colas listaAsignados y listaEspera, y actualiza el estado de la materia en el listado del estudiante
+		
+		void ingresarCandidato(Estudiante *estudiante);				// Ingresa a un candidato a la materia a la cola de candidatos
+		
+		void mostrarInfo();											// Imprime la información general de cada curso (ID y nombre)
+		
+		void mostrarDetalles();										// Imprime los detalles de cada curso (cantidad de cupos y tipo de prioridad)
+		
+		void mostrarListaAsignados();								// Imprime la lista de estudiantes asignados para el curso
+		
+		void mostrarListaEspera();									// Imprime la lista de estudiantes que quedaron en espera para el curso
+		
+		void mostrarListaCandidatos();								// Imprime la lista de candidatos para el curso
+		
+		void mostrarResultados();									// Imprime los resultados del proceso de inscripcion de la materia
+																	// (Nombre del curso, detalles, lista de asignados y lista en espera)
+
+		void crearLista(Cola *cola);								// Une en una nueva cola los estudiantes asignados y lista de espera,
+																	// paso previo para realizar una intersección de los estudiantes en la cola
+		
+		string listaMaterias( int id );								// Devuelve el nombre de la materia según su ID
 		
 		/* ----- Destructor ----- */
 		
-		~Curso();
+		~Curso();													// Destructor
 	
 };
 

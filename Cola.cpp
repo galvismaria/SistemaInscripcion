@@ -7,23 +7,6 @@ Cola::Cola(){
 	
 }
 
-Cola::Cola( Cola *cola ){
-	
-	if ( !cola->estaVacia() ){
-		
-		Nodo *temp = inicio;
-		
-		while ( temp ){
-			
-			encolar( new Estudiante( temp->getEstudiante() ) );
-			temp = temp->getSiguiente();
-			
-		}
-		
-	}
-	
-}  
-
 Nodo* Cola::getInicio(){
 	
 	return inicio;
@@ -199,12 +182,16 @@ void Cola::imprimirMateriasEstudiante(string nombre){
 	else {
 		
 		cout << "\nNo hay materias\n";
-		system("pause");
 		
 	}
 	
 }
 
 Cola::~Cola(){
-	;
+	
+	while ( inicio ){
+		
+		desencolar();
+		
+	}
 }

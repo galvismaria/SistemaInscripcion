@@ -3,85 +3,7 @@
 Inscripcion::Inscripcion(){
 	
 	estudiantes = new Lista<Estudiante>;
-	cursos = new Lista<Curso>();
-	
-}
-
-Lista<Estudiante>* Inscripcion::getEstudiantes(){
-	
-	return estudiantes;
-	
-}
-
-Lista<Curso>* Inscripcion::getCursos(){
-	
-	return cursos;
-	
-}
-
-void Inscripcion::ingresarEstudiantes( Estudiante *estudiante ){
-	
-	estudiantes->insertar( estudiante );
-	
-}
-
-void Inscripcion::ingresarCurso( Curso *curso ){
-	
-	cursos->insertar( curso );
-	
-}
-
-
-void Inscripcion::asignarCandidatos(){
-	
-	Estudiante *temp = new Estudiante();
-	
-	int materias[MAX_MATERIAS];
-	
-	estudiantes->primero();
-
-	while ( estudiantes->hayActual() ){
-		
-		temp = estudiantes->valorActual();
-		
-		temp->obtenerMaterias( materias );
-		
-		for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
-			
-			cursos->primero();
-			
-			while ( cursos->hayActual() ){
-				
-				if ( materias[i] == cursos->valorActual()->getID() ){
-					
-					cursos->valorActual()->ingresarCandidato( new Estudiante( temp ) );
-					
-				}
-				
-				cursos->siguiente();
-				
-			}
-			
-		}
-		
-		estudiantes->siguiente();
-		
-	}
-	
-	
-}
-
-void Inscripcion::inscribirEstudiantes(){
-	
-	cursos->primero();
-	
-	while ( cursos->hayActual() ){
-		
-		cursos->valorActual()->generarListaAsignados();
-		cursos->siguiente();
-		
-	}
-
+	cursos = new Lista<Curso>;
 	
 }
 
@@ -195,6 +117,70 @@ void Inscripcion::cargarMateriasEstudiante( int cedula, int materias[], int n ){
 		
 }
 
+void Inscripcion::ingresarEstudiantes( Estudiante *estudiante ){
+	
+	estudiantes->insertar( estudiante );
+	
+}
+
+void Inscripcion::ingresarCurso( Curso *curso ){
+	
+	cursos->insertar( curso );
+	
+}
+
+void Inscripcion::asignarCandidatos(){
+	
+	Estudiante *temp = new Estudiante();
+	
+	int materias[MAX_MATERIAS];
+	
+	estudiantes->primero();
+
+	while ( estudiantes->hayActual() ){
+		
+		temp = estudiantes->valorActual();
+		
+		temp->obtenerMaterias( materias );
+		
+		for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
+			
+			cursos->primero();
+			
+			while ( cursos->hayActual() ){
+				
+				if ( materias[i] == cursos->valorActual()->getID() ){
+					
+					cursos->valorActual()->ingresarCandidato( new Estudiante( temp ) );
+					
+				}
+				
+				cursos->siguiente();
+				
+			}
+			
+		}
+		
+		estudiantes->siguiente();
+		
+	}
+	
+	
+}
+
+void Inscripcion::inscribirEstudiantes(){
+	
+	cursos->primero();
+	
+	while ( cursos->hayActual() ){
+		
+		cursos->valorActual()->generarListaAsignados();
+		cursos->siguiente();
+		
+	}
+	
+}
+
 void Inscripcion::interseccionEstudiantes(){
 	
 	cursos->primero();
@@ -221,7 +207,6 @@ void Inscripcion::interseccionEstudiantes(){
 				
 		 	}
 		 	
-			
 		}
 		
 		cursos->siguiente();		
@@ -406,5 +391,7 @@ void Inscripcion::salir(){
 }
 
 Inscripcion::~Inscripcion(){
-	;
+	delete [] estudiantes;
+	delete [] cursos;
+	delete &archivo;
 }

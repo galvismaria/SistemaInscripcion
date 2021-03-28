@@ -8,7 +8,6 @@ Estudiante::Estudiante(){
 	indice = 0;
 	nivel = 0;
 	creditos = 0;
-	this->nMaterias = 0;
 	
 }
 
@@ -20,7 +19,6 @@ Estudiante::Estudiante( string nombre, string carrera, int cedula, float indice,
 	this->indice = indice;
 	this->nivel = nivel;
 	this->creditos = creditos;
-	this->nMaterias = 0;
 	
 	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 		
@@ -40,7 +38,6 @@ Estudiante::Estudiante( Estudiante *estudiante ){
 	this->indice = estudiante->indice;
 	this->nivel = estudiante->nivel;
 	this->creditos = estudiante->creditos;
-	this->nMaterias = estudiante->nMaterias;
 	
 	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 		
@@ -78,12 +75,6 @@ void Estudiante::setNivel( int nivel ){
 void Estudiante::setCreditos( int creditos ){
 	
 	this->creditos = creditos;
-	
-}
-
-void Estudiante::setNMaterias( int nMaterias ){
-	
-	this->nMaterias = nMaterias;
 	
 }
 
@@ -165,12 +156,6 @@ int Estudiante::getCreditos(){
 	
 }
 
-int Estudiante::getNMaterias(){
-	
-	return nMaterias;
-	
-}
-
 int Estudiante::getInfo(){
 	
 	return cedula;
@@ -235,6 +220,7 @@ bool Estudiante::tienePrioridad( Estudiante *estudiante, int caso ){
 void Estudiante::mostrarInfo(){
 	
 	cout << "\tNombre:\t" << this->nombre << " \n";
+	cout << "\tCedula:\t" << this->cedula << " \n";
 	cout << "\tIndice:\t" << this->indice << " \n";
 	cout << "\tNivel:\t" << this->nivel << " \n";
 	cout << "\tUC:\t" << this->creditos << " \n";
@@ -286,5 +272,13 @@ void Estudiante::mostrarMaterias(){
 }
 
 Estudiante::~Estudiante(){
-	;
+	
+	delete &nombre;
+	delete &carrera;
+	delete &cedula;	
+	delete &indice;
+	delete &nivel;
+	delete &creditos;
+	delete &materias;
+	
 }

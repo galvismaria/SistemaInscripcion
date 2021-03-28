@@ -22,50 +22,27 @@ Curso::Curso(int id, int cupos, int prioridad){
 	
 }
 
+void Curso::setID(int id){
+	
+	this->id = id;
+	
+}
+
+void Curso::setCupos(int cupos){
+	
+	this->cupos = cupos;
+	
+}
+
+void Curso::setPrioridad(int prioridad){
+	
+	this->prioridad = prioridad;
+	
+}
+
 int Curso::getID(){
 	
 	return id;
-	
-}
-
-Cola* Curso::getListaAsignados(){
-	
-	if ( listaAsignados ){
-		
-		Cola *temp = new Cola ( listaAsignados );
-	
-		return temp;
-		
-	}
-	
-	else{
-		
-		return NULL;
-		
-	}
-	
-}
-
-Cola* Curso::getListaEspera(){
-	
-	if ( listaEspera ){
-		
-		Cola *temp = new Cola ( listaEspera );
-	
-		return temp;
-		
-	}
-	
-	else{
-		
-		return NULL;
-	}
-	
-}
-
-Cola* Curso::getCandidatos(){
-	
-	return candidatos;
 	
 }
 
@@ -82,38 +59,6 @@ int Curso::getEstudiantesInscritos(){
 int Curso::getEstudiantesSinCupo(){
 	
 	return listaEspera->getElementos();
-	
-}
-
-bool Curso::hayCandidatos(){
-	
-	if ( !candidatos->estaVacia() ){
-		
-		return true;
-		
-	}
-	
-	else{
-		
-		return false;
-		
-	}
-	
-}
-
-bool Curso::hayAsignados(){
-	
-	if ( !listaAsignados->estaVacia() ){
-		
-		return true;
-		
-	}
-	
-	else{
-		
-		return false;
-		
-	}
 	
 }
 
@@ -328,5 +273,10 @@ void Curso::crearLista(Cola *cola){
 }
 
 Curso::~Curso(){
-	;
+	delete &id;
+	delete &cupos;
+	delete &prioridad;
+	delete [] listaAsignados;
+	delete [] listaEspera;
+	delete [] candidatos;
 }
