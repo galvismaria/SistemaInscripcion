@@ -126,7 +126,7 @@ void Inscripcion::ingresarEstudiantes(){
 	cout<<"\tCreditos aprobados: ";
 	cin >>numero_credito;
 	
-	guardar<<"\n"<<nombre<<"  "<<apellido<<"  "<<cedula<<"  "<< carrera<<"        "<<indice<<"        "<<nivel<<"       "<<numero_credito;
+	guardar<<"\n"<<nombre<<" "<<apellido<<" "<<cedula<<" "<< carrera<<" "<<indice<<" "<<nivel<<" "<<numero_credito;
 	guardar.close();
 	
 	system("cls");
@@ -164,7 +164,7 @@ void Inscripcion::ingresarEstudiantes(){
 		
 	}
 
-	guardar <<"\n"<< cedula <<"  " << materias[0] <<"  " << materias[1] <<"  " << materias[2] <<"  " << materias[3] <<"  " << materias[4] <<"  " << materias[5] <<"  " << materias[6] <<"  " << materias[7] <<"  " << materias[8] <<"  " << materias[9];
+	guardar << "\n" << cedula << " " << materias[0] << " " << materias[1] << " " << materias[2] << " " << materias[3] << " " << materias[4] << " " << materias[5] << " " << materias[6] << " " << materias[7] << " " << materias[8] << " " << materias[9];
 	
 	guardar.close();
 	
@@ -295,6 +295,9 @@ void Inscripcion::interseccionEstudiantes(){
 
 	
 void Inscripcion::procesoInscripcion(){
+	
+	estudiantes = new Lista<Estudiante>;
+	cursos = new Lista<Curso>;
 	
 	cargarCursos();
 	cargarEstudiantes();
@@ -569,6 +572,9 @@ void Inscripcion::menuPrincipal(){
 				
 				break;
 		}
+		
+		delete estudiantes;
+		delete cursos;
 		
 	}
 		

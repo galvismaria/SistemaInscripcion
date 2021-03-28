@@ -8,4 +8,11 @@ Emily    Rodriguez  24851522  ing        8        3       20
 Camilo   Cstilla    23598421  ing        9        1       14
 Anton    Ego        28569351  ing        1        4       22
 Veronica Veronica   27845126  ing        9        1       14
-Maria  Galvis       26753655  Ing        7        3       27
+Maria Galvis 26753655 Ingenieria 8 3 35
+Roxana Salazar 25346332 Ingenieria 8 3 37
+Kaka keke 34342 Ing 1 2 3
+Sasha Lala 23113 asdsa 23 12 3
+asdada adsad 21313 1 2 3 2
+sdfsf asdad 3453 sdfsadf 1 2 3
+asdadad kakakakakaka 23141244 adkadkmasd 4 5 6
+asdadaf asfasfsaf 12313 sdfsf 66 66 66

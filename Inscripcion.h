@@ -45,6 +45,8 @@ class Inscripcion{
 		void cargarMateriasEstudiante( int cedula, int materias[], int n );		// Funciï¿½n que recorre la lista de estudiantes y aï¿½ade las materias que 
 																				// cada estudiante quiere inscribir
 		
+		void ingresarEstudiantes();												// Función que permite registrar estudiantes nuevos para el proceso de inscripción
+		
 		void ingresarEstudiantes(Estudiante *estudiante);						// Ingresa un estudiante al listado de estudiantes
 		
 		void ingresarCurso(Curso *curso);										// Ingresa un curso al listado de cursos
@@ -76,8 +78,6 @@ class Inscripcion{
 		void menuPrincipal();													// Muestra el menï¿½ principal del programa
 		
 		void salir();															// Finaliza el programa
-
-		void ingresarEstudiantes();
 		
 		/* ----- Destructor ----- */
 		
