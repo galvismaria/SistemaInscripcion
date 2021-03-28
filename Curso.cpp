@@ -2,6 +2,7 @@
 
 Curso::Curso(){
 	
+	nombre = "\0";
 	id = 0;
 	cupos = 0;
 	prioridad = 0;
@@ -11,8 +12,9 @@ Curso::Curso(){
 	
 }
 
-Curso::Curso(int id, int cupos, int prioridad){
+Curso::Curso(string nombre, int id, int cupos, int prioridad){
 	
+	this->nombre = nombre;
 	this->id = id;
 	this->cupos = cupos;
 	this->prioridad = prioridad;
@@ -40,6 +42,12 @@ void Curso::setPrioridad(int prioridad){
 	
 }
 
+string Curso::getNombre(){
+	
+	return nombre;
+	
+}
+
 int Curso::getID(){
 	
 	return id;
@@ -56,6 +64,7 @@ int Curso::getEstudiantesInscritos(){
 	return listaAsignados->getElementos();
 	
 }
+
 int Curso::getEstudiantesSinCupo(){
 	
 	return listaEspera->getElementos();
@@ -137,7 +146,8 @@ string Curso::listaMaterias( int id ){
 							"Informatica industrial",
 							"Innovacion y desarrollo",
 							"Ingenieria del software",
-							"Lenguajes de compiladores"
+							"Lenguajes de compiladores",
+							"Investigacion de operaciones"
 							 };
 	
 	string str(MATERIAS[id-1]);

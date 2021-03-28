@@ -59,8 +59,6 @@ class Cola{
 		
 		void imprimir();								// Imprime la información del estudiante que se encuentra en cada nodo
 		
-		void imprimirMateriasEstudiante(string nombre);	// Imprime las materias del estudiante que se encuentra en cada nodo
-		
 		/* ----- Destructor ----- */
 		
 		~Cola();										// Destructor

@@ -16,13 +16,13 @@ void Inscripcion::cargarCursos(){
     	int id;
     	int prioridad;
         int cupos;
-        string Mat;
+        string nombre;
         
         while( !archivo.eof() ){
         	
-            archivo >> Mat >> id >> cupos >> prioridad;
+            archivo >> nombre >> id >> cupos >> prioridad;
     
-            cursos->insertar( new Curso( id, cupos, prioridad ) );
+            cursos->insertar( new Curso( nombre, id, cupos, prioridad ) );
             
         }
         
@@ -104,7 +104,8 @@ void Inscripcion::ingresarEstudiantes(){
 	string carrera;
 	int materias[MAX_MATERIAS];
 	int temp;
-
+	
+	cout<<"\t(reemplazar espacios por '-')\n\n";
    	cout<<"\tNombre: ";
 	cin >>nombre;
 	
@@ -172,6 +173,38 @@ void Inscripcion::ingresarEstudiantes(){
 
 }
 
+void Inscripcion::ingresarMaterias(){
+	
+	system("cls");
+	cout << "\n\n";
+	
+	guardar.open("ListaMaterias.txt", ios::app);
+
+	int id, cupos, prioridad;
+	string nombre;
+
+   	cout<<"\tNombre (reemplazar espacios por '-'): ";
+	cin >>nombre;
+	
+	cout<<"\tID: ";
+	cin >>id;
+	
+	cout<<"\tCupos: ";
+	cin >>cupos;
+	
+	cout<<"\tTipo de prioridad:\n";
+	cout<<"\t\t(1) Indice academico, nivel actual\n";
+	cout<<"\t\t(2) Nivel actual, indice academico\n";
+	cout<<"\t\t(3) Creditos aprobados, indice academico\n\t";
+	cin >>prioridad;
+	
+	guardar<<"\n"<<nombre<<" "<<id<<" "<<cupos<<" "<< prioridad;
+	guardar.close();
+	
+	system("cls");
+	cout << "\n\n";
+
+}
 
 void Inscripcion::cargarMateriasEstudiante( int cedula, int materias[], int n ){
 	
@@ -454,7 +487,7 @@ void Inscripcion::registrarDatos(){
 				"\n\n\t\t2. Registrar asignatura" <<
 				"\n\n\t\t3. Regresar";
 	
-		cout << "\t-------------------------------------------" << " \n\n\t\t";	
+		cout << "\n\n\t-------------------------------------------" << " \n\n\t\t";	
 	
 		bool flag = false;
 		int opcion;
@@ -486,7 +519,7 @@ void Inscripcion::registrarDatos(){
 				break;
 				
 			case 2:
-				//ingresarMaterias();
+				ingresarMaterias();
 				break;
 				
 			case 3:

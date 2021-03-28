@@ -18,6 +18,7 @@ class Curso{
 		
 		/* ----- ATRIBUTOS ----- */
 		
+		string nombre;												// Nombre
 		int id;														// ID que representa a la materia
 		int cupos;													// Cantidad de cupos disponibles para la materia
 		int prioridad;												// Número que representa el tipo de prioridad que tendrá la materia durante el proceso de inscripción
@@ -32,7 +33,7 @@ class Curso{
 		/* ----- Constructores ----- */
 		
 		Curso();													// Constructor sin parámetros -> Crea un curso sin información detallada
-		Curso(int id, int cupos, int prioridad);					// Constructor con parámetros -> Crea un curso con su ID, cantidad de cupos y tipo de prioridad
+		Curso(string nombre, int id, int cupos, int prioridad);		// Constructor con parámetros -> Crea un curso con su ID, cantidad de cupos y tipo de prioridad
 		
 		/* ----- Setters ----- */
 		
@@ -42,6 +43,7 @@ class Curso{
 		
 		/* ----- Getters ----- */
 		
+		string getNombre();
 		int getID();
 		int getInfo();
 		int getEstudiantesInscritos();
@@ -72,7 +74,7 @@ class Curso{
 		void crearLista(Cola *cola);								// Une en una nueva cola los estudiantes asignados y lista de espera,
 																	// paso previo para realizar una intersección de los estudiantes en la cola
 		
-		string listaMaterias( int id );								// Devuelve el nombre de la materia según su ID
+		string listaMaterias(int id);								// Devuelve el nombre de la materia según su ID
 		
 		/* ----- Destructor ----- */
 		

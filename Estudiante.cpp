@@ -238,7 +238,8 @@ string Estudiante::listaMaterias( int id ){
 							"Informatica industrial",
 							"Innovacion y desarrollo",
 							"Ingenieria del software",
-							"Lenguajes de compiladores"
+							"Lenguajes de compiladores",
+							"Investigacion de operaciones"
 							 };
 	
 	string str(MATERIAS[id-1]);

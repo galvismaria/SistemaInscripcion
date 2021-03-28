@@ -8,3 +8,4 @@ Informatica-industrial             07       3   2
 Innovacion-y-desarrollo            08       3   2
 Ingenieria-del-software            09       3   3
 Lenguaje-de-compiladores           10       3   2
+Investigacion-de-operaciones 11 4 2

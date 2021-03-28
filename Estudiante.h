@@ -3,6 +3,12 @@
 
 #include "Global.h"
 
+/*
+	
+		Clase que representa a un estudiante
+	
+*/
+
 using namespace std;
 
 class Estudiante{

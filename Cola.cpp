@@ -151,31 +151,6 @@ void Cola::imprimir(){
 	
 }
 
-void Cola::imprimirMateriasEstudiante(string nombre){
-	
-	if ( !estaVacia() ){
-		
-		Nodo *aux;
-	
-		aux = inicio;
-	
-		while ( aux ){
-			
-			if ( aux->getEstudiante()->getNombre() == nombre ){
-				
-				aux->getEstudiante()->mostrarMaterias();
-				break;
-				
-			}
-			
-			aux = aux->getSiguiente();
-		
-		}
-		
-	}
-	
-}
-
 Cola::~Cola(){
 	
 	while ( inicio ){

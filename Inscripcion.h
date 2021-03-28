@@ -20,8 +20,8 @@ class Inscripcion{
 		
 		Lista<Estudiante> *estudiantes;			// Lista de estudiantes que participarï¿½n en el proceso de inscripciï¿½n
 		Lista<Curso> *cursos;					// Lista de cursos ofertados durante el proceso de inscripciï¿½n
-		fstream archivo;						// Atributo para manejar la lectura/escrito de archivos de texto
-		ofstream guardar;                        //Atributi para manejar la lectura/escrito de archivos de texto
+		fstream archivo;						// Atributo para manejar la lectura de archivos de texto
+		ofstream guardar;                       // Atributo para manejar la escritura de archivos de texto
 		
 	public:
 		
@@ -46,6 +46,8 @@ class Inscripcion{
 																				// cada estudiante quiere inscribir
 		
 		void ingresarEstudiantes();												// Función que permite registrar estudiantes nuevos para el proceso de inscripción
+		
+		void ingresarMaterias();												// Función que permite registrar cursos nuevos para el proceso de inscripción
 		
 		void ingresarEstudiantes(Estudiante *estudiante);						// Ingresa un estudiante al listado de estudiantes
 		
