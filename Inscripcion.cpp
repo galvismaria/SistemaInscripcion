@@ -105,16 +105,16 @@ void Inscripcion::ingresarEstudiantes(){
 	int materias[MAX_MATERIAS];
 	int temp;
 	
-	cout<<"\t(reemplazar espacios por '-')\n\n";
-   	cout<<"\tNombre: ";
+   	cout<<"\tPrimer nombre: ";
 	cin >>nombre;
 	
-	cout<<"\tApellido: ";
+	cout<<"\tPrimer apellido: ";
 	cin >>apellido;
 	
 	cout<<"\tCedula: ";
 	cin >>cedula;
 	
+	cout<<"(reemplazar espacios por '-')";
 	cout<<"\tCarrera: ";
 	cin >>carrera;
 	
@@ -329,16 +329,17 @@ void Inscripcion::interseccionEstudiantes(){
 string Inscripcion::nombreCurso( int id ){
 	
 	Curso *temp = cursos->buscar( id );
+	string nombre = "\0";
 	
 	if ( temp ){
 		
-		return temp->getNombre();
+		nombre = temp->getNombre();
+		
+		replace( nombre.begin(), nombre.end(), '-', ' ');
 		
 	}
 	
-	else{
-		return "\0";
-	}
+	return nombre;
 	
 }
 
@@ -361,7 +362,7 @@ void Inscripcion::imprimirDetalleCurso( int id ){
 	
 	if ( temp ){
 		
-		cout << "\t\t* * * " << nombreCurso( cursos->valorActual()->getID() ) << " * * *" << " \n\n";
+		cout << "\t\t* * * " << nombreCurso( temp->getID() ) << " * * *" << " \n\n";
 		temp->mostrarDetalles();
 		temp->mostrarResultados();
 		
@@ -536,7 +537,7 @@ void Inscripcion::contarSinCupo(){
 	
 	while ( cursos->hayActual() ){
 		
-		cout << "\t" << cursos->valorActual()->listaMaterias( cursos->valorActual()->getID() );
+		cout << "\t" << nombreCurso( cursos->valorActual()->getID() );
 		cout << "\t\t( " << cursos->valorActual()->getEstudiantesSinCupo() << " )\n";
 		n = n + cursos->valorActual()->getEstudiantesSinCupo();
 		

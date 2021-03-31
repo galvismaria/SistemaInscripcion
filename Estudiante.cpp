@@ -132,6 +132,12 @@ string Estudiante::getNombre(){
 	
 }
 
+string Estudiante::getCarrera(){
+	
+	return carrera;
+	
+}
+
 int Estudiante::getCedula(){
 	
 	return cedula;
@@ -219,34 +225,18 @@ bool Estudiante::tienePrioridad( Estudiante *estudiante, int caso ){
 
 void Estudiante::mostrarInfo(){
 	
+	string tempCarrera = this->getCarrera();
+	
+	replace( tempCarrera.begin(), tempCarrera.end(), '-', ' ');
+	
 	cout << "\tNombre:\t" << this->nombre << " \n";
 	cout << "\tCedula:\t" << this->cedula << " \n";
+	cout << "\tCarrera: " << tempCarrera << " \n";
 	cout << "\tIndice:\t" << this->indice << " \n";
 	cout << "\tNivel:\t" << this->nivel << " \n";
 	cout << "\tUC:\t" << this->creditos << " \n";
 	
 }
-
-string Estudiante::listaMaterias( int id ){
-	
-	char *MATERIAS[] = { "Simulacion informatica",
-							"Arquitectira del computador", 
-							"Sistema de bases de datos",
-							"Redes de computadoras",
-							"Sistemas distribuidos",
-							"Sistemas de operacion",
-							"Informatica industrial",
-							"Innovacion y desarrollo",
-							"Ingenieria del software",
-							"Lenguajes de compiladores",
-							"Investigacion de operaciones"
-							 };
-	
-	string str(MATERIAS[id-1]);
-	
-	return str;
-	
-};
 
 void Estudiante::mostrarDetalleMateria( int id ){
 	

@@ -135,27 +135,6 @@ void Curso::ingresarCandidato( Estudiante *estudiante ){
 	
 }
 
-string Curso::listaMaterias( int id ){
-	
-	char *MATERIAS[] = { "Simulacion informatica",
-							"Arquitectira del computador", 
-							"Sistema de bases de datos",
-							"Redes de computadoras",
-							"Sistemas distribuidos",
-							"Sistemas de operacion",
-							"Informatica industrial",
-							"Innovacion y desarrollo",
-							"Ingenieria del software",
-							"Lenguajes de compiladores",
-							"Investigacion de operaciones"
-							 };
-	
-	string str(MATERIAS[id-1]);
-	
-	return str;
-	
-}
-
 void Curso::mostrarInfo(){
 	
 	cout << "\tID: " << this->getID() << " \n";
@@ -189,6 +168,8 @@ void Curso::mostrarDetalles(){
 			break;
 		
 	};
+	
+	cout << "\n";
 	
 }
 
@@ -226,8 +207,6 @@ void Curso::mostrarListaEspera(){
 void Curso::mostrarListaCandidatos(){
 	
 	if ( !candidatos->estaVacia() ){
-		
-		cout << "\t\t* * * " << listaMaterias( id ) << " * * *" << " \n\n";
 		
 		cout << "\t\t\t- Candidatos -" << " \n\n";
 		candidatos->imprimir();

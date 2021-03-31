@@ -56,6 +56,7 @@ class Estudiante{
 		/* ----- Getters ----- */
 		
 		string getNombre();
+		string getCarrera();
 		int getCedula();
 		float getIndice();
 		int getNivel();
@@ -87,10 +88,8 @@ class Estudiante{
 		
 		void mostrarInfo();											// Imprime la información del estudiante (nombre, cedula, indice, nivel y creditos)
 									
-		void mostrarDetalleMateria(int id);										// Imprime las materias almacenadas en el estudiante,
+		void mostrarDetalleMateria(int id);							// Imprime los detalles de la materia de un estudiante según el ID de la materia,
 																	// mostrando si tiene cupo y el lugar que ocupa en el listado de asignados o en espera.
-		
-		string listaMaterias( int id );								// Devuelve el nombre de la materia según su ID
 		
 		/* ----- Destructor ----- */
 		

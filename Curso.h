@@ -74,8 +74,6 @@ class Curso{
 		void crearLista(Cola *cola);								// Une en una nueva cola los estudiantes asignados y lista de espera,
 																	// paso previo para realizar una intersección de los estudiantes en la cola
 		
-		string listaMaterias(int id);								// Devuelve el nombre de la materia según su ID
-		
 		/* ----- Destructor ----- */
 		
 		~Curso();													// Destructor
