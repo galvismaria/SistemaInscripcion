@@ -134,7 +134,11 @@ string Estudiante::getNombre(){
 
 string Estudiante::getCarrera(){
 	
-	return carrera;
+	string tempCarrera = this->getCarrera();
+	
+	replace( tempCarrera.begin(), tempCarrera.end(), '-', ' ');
+	
+	return tempCarrera;
 	
 }
 
@@ -225,13 +229,9 @@ bool Estudiante::tienePrioridad( Estudiante *estudiante, int caso ){
 
 void Estudiante::mostrarInfo(){
 	
-	string tempCarrera = this->getCarrera();
-	
-	replace( tempCarrera.begin(), tempCarrera.end(), '-', ' ');
-	
 	cout << "\tNombre:\t" << this->nombre << " \n";
 	cout << "\tCedula:\t" << this->cedula << " \n";
-	cout << "\tCarrera: " << tempCarrera << " \n";
+	cout << "\tCarrera: " << this->carrera << " \n";
 	cout << "\tIndice:\t" << this->indice << " \n";
 	cout << "\tNivel:\t" << this->nivel << " \n";
 	cout << "\tUC:\t" << this->creditos << " \n";
