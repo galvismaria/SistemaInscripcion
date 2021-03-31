@@ -10,3 +10,4 @@ Anton    Ego        28569351  Ingenieria-Informatica        1        4       22
 Veronica Lopez 	    27845126  Ingenieria-Informatica        9        1       14
 Maria Galvis 26753655 Ingenieria-Informatica 8 3 35
 Roxana Salazar 25346332 Ingenieria-Informatica 8 3 37
+Jose Lopez 28953654 Ingenieria-Informatica 8 4 39

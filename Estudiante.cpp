@@ -134,7 +134,7 @@ string Estudiante::getNombre(){
 
 string Estudiante::getCarrera(){
 	
-	string tempCarrera = this->getCarrera();
+	string tempCarrera = this->carrera;
 	
 	replace( tempCarrera.begin(), tempCarrera.end(), '-', ' ');
 	
@@ -231,7 +231,7 @@ void Estudiante::mostrarInfo(){
 	
 	cout << "\tNombre:\t" << this->nombre << " \n";
 	cout << "\tCedula:\t" << this->cedula << " \n";
-	cout << "\tCarrera: " << this->carrera << " \n";
+	cout << "\tCarrera: " << this->getCarrera() << " \n";
 	cout << "\tIndice:\t" << this->indice << " \n";
 	cout << "\tNivel:\t" << this->nivel << " \n";
 	cout << "\tUC:\t" << this->creditos << " \n";

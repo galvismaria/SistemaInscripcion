@@ -114,7 +114,7 @@ void Inscripcion::ingresarEstudiantes(){
 	cout<<"\tCedula: ";
 	cin >>cedula;
 	
-	cout<<"(reemplazar espacios por '-')";
+	cout<<"\t(reemplazar espacios por '-')\n";
 	cout<<"\tCarrera: ";
 	cin >>carrera;
 	
@@ -143,12 +143,14 @@ void Inscripcion::ingresarEstudiantes(){
 		
 	}
 		
-	cout << "\tIngrese el ID de la materia que desea inscribirn\n";
-	cout <<	"\t(-1 para terminar)\n\t";
+	cout << "\tIngrese el ID de la materia que desea inscribir.\n";
+	cout << "\tPuede registrar un maximo de 10 materias.\n";
+	cout <<	"\t(-1 para terminar)\n";
 	
 	
 	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 		
+		cout <<"\t";
 		cin >> temp;
 		
 		if ( temp == -1 ){
