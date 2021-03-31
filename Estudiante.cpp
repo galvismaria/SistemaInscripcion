@@ -248,15 +248,12 @@ string Estudiante::listaMaterias( int id ){
 	
 };
 
-void Estudiante::mostrarMaterias(){
-	
-	cout << "\n\t--------------------------------------------" << " \n";
+void Estudiante::mostrarDetalleMateria( int id ){
 	
 	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 		
-		if ( materias[i].id != 0 ){
+		if ( (id != 0) && materias[i].id ==id ){
 			
-			cout << "\n\tMateria: " << listaMaterias( materias[i].id ) << "\n";
 			cout << "\tEstatus: ";
 			
 			if ( materias[i].asignado )
@@ -270,8 +267,6 @@ void Estudiante::mostrarMaterias(){
 		}
 		
 	}
-	
-	cout << "\t--------------------------------------------" << " \n\n";
 	
 }
 

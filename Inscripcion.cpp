@@ -326,6 +326,82 @@ void Inscripcion::interseccionEstudiantes(){
 		
 }
 
+string Inscripcion::nombreCurso( int id ){
+	
+	Curso *temp = cursos->buscar( id );
+	
+	if ( temp ){
+		
+		return temp->getNombre();
+		
+	}
+	
+	else{
+		return "\0";
+	}
+	
+}
+
+void Inscripcion::imprimirListaCursos(){
+	
+	cursos->primero();
+	
+	while ( cursos->hayActual() ){
+		
+		cout << "\t(ID: " << cursos->valorActual()->getID() << ") " << nombreCurso( cursos->valorActual()->getID() ) << " \n";
+		cursos->siguiente();
+		
+	}
+	
+}
+
+void Inscripcion::imprimirDetalleCurso( int id ){
+	
+	Curso *temp = cursos->buscar(id);
+	
+	if ( temp ){
+		
+		cout << "\t\t* * * " << nombreCurso( cursos->valorActual()->getID() ) << " * * *" << " \n\n";
+		temp->mostrarDetalles();
+		temp->mostrarResultados();
+		
+	}
+	
+}
+
+void Inscripcion::imprimirMateriasEstudiante( int cedula ){
+	
+	Estudiante *temp = estudiantes->buscar(cedula);
+	int materias[MAX_MATERIAS];
+	
+	if ( temp ){	
+		
+		temp->obtenerMaterias(materias);
+		
+		cout << "\n\t--------------------------------------------" << " \n\n";
+	
+		for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
+		
+			if ( materias[i] != 0 ){
+				
+				cout << "\t\t" << nombreCurso( materias[i] ) << "\n\n";
+				
+				temp->mostrarDetalleMateria( materias[i] );
+				
+				cout << "\n\n";
+				
+				cout << "\t--------------------------------------------" << " \n\n";
+			
+			}
+		
+		}
+	
+		
+		
+	}
+	
+	
+}
 	
 void Inscripcion::procesoInscripcion(){
 	
@@ -352,7 +428,7 @@ void Inscripcion::listaCursos(){
 		
 		system("cls");
 		cout << "\n\n";
-		cursos->imprimir();
+		imprimirListaCursos();
 		
 		cout << "\tIngrese el ID de la materia para visualizar los resultados del proceso de inscripcion\n";
 		cout << "\t(-1 para volver)\n\t";
@@ -375,7 +451,7 @@ void Inscripcion::listaCursos(){
 				
 				system("cls");
 				cout << "\n\n";
-				curso->mostrarResultados();
+				imprimirDetalleCurso(opcion);
 				system("pause");
 				flag = false;
 				break;
@@ -428,7 +504,7 @@ void Inscripcion::buscarEstudiante(){
 				system("cls");
 				cout << "\n\n";
 				estudiante->mostrarInfo();
-				estudiante->mostrarMaterias();
+				imprimirMateriasEstudiante(opcion);
 				system("pause");
 				flag = false;
 				break;

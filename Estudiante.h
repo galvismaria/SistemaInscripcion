@@ -87,7 +87,7 @@ class Estudiante{
 		
 		void mostrarInfo();											// Imprime la información del estudiante (nombre, cedula, indice, nivel y creditos)
 									
-		void mostrarMaterias();										// Imprime las materias almacenadas en el estudiante,
+		void mostrarDetalleMateria(int id);										// Imprime las materias almacenadas en el estudiante,
 																	// mostrando si tiene cupo y el lugar que ocupa en el listado de asignados o en espera.
 		
 		string listaMaterias( int id );								// Devuelve el nombre de la materia según su ID

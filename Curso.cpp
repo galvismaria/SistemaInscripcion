@@ -158,8 +158,7 @@ string Curso::listaMaterias( int id ){
 
 void Curso::mostrarInfo(){
 	
-	cout << "\t(ID: " << this->getID() << ") " << listaMaterias( this->getID() ) << " \n";
-	cout << " \n";
+	cout << "\tID: " << this->getID() << " \n";
 	
 }
 
@@ -244,8 +243,6 @@ void Curso::mostrarListaCandidatos(){
 void Curso::mostrarResultados(){
 	
 	cout << "\t--------------------------------------------------------------------------" << " \n\n";
-	cout << "\t\t* * * " << listaMaterias( id ) << " * * *" << " \n\n";
-	mostrarInfo();
 	cout << "\n";
 	mostrarListaAsignados();
 	mostrarListaEspera();

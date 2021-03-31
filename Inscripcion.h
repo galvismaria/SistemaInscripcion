@@ -65,6 +65,14 @@ class Inscripcion{
 																				// Es decir, que el listado de materias de cada estudiante se actualiza
 																				// con el estado de inscrito o en espera, y el lugar que ocupa en la cola respectiva
 		
+		string nombreCurso(int id);
+		
+		void imprimirListaCursos();
+		
+		void imprimirDetalleCurso(int id);
+		
+		void imprimirMateriasEstudiante(int cedula);
+		
 		void procesoInscripcion();												// Funcion que llama a las funciones para llevar a cabo las inscripciones
 		
 		void listaCursos();														// Muestra la lista de cursos ofertados, y recibe como entrada la ID de un curso
