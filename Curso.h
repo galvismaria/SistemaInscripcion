@@ -2,7 +2,6 @@
 #define CURSO
 
 #include "Cola.h"
-#include "Lista.h"
 
 using namespace std;
 
