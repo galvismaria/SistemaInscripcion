@@ -104,6 +104,8 @@ void Inscripcion::ingresarEstudiantes(){
 	string carrera;
 	int materias[MAX_MATERIAS];
 	int temp;
+	bool flag = false;
+	int opcion;
 	
    	cout<<"\tPrimer nombre: ";
 	cin >>nombre;
@@ -119,13 +121,71 @@ void Inscripcion::ingresarEstudiantes(){
 	cin >>carrera;
 	
 	cout<<"\tIndice academico: ";
-	cin >>indice;
+	
+	while ( !flag ) {
+			
+		cin >> indice;
+			
+		if ( (indice >= 0) && (indice <= 10) ){
+			
+			flag = true;
+			
+		}
+				
+		else{
+			
+			cout << "\n\tValor invalido, intente de nuevo: ";
+			cin.clear();
+			cin.ignore(200, '\n');
+				
+		}
+	}
+	
+	flag = false;
 	
 	cout<<"\tNivel: ";
-	cin >>nivel;
 	
+	while ( !flag ) {
+			
+		cin >>nivel;
+			
+		if ( (nivel >= 0) && (nivel <= 9) ){
+			
+			flag = true;
+			
+		}
+				
+		else{
+			
+			cout << "\n\tValor invalido, intente de nuevo: ";
+			cin.clear();
+			cin.ignore(200, '\n');
+				
+		}
+	}
+	
+	flag = false;
+
 	cout<<"\tCreditos aprobados: ";
-	cin >>numero_credito;
+	
+	while ( !flag ) {
+			
+		cin >>numero_credito;
+			
+		if ( (numero_credito >= 0) && (numero_credito <= 175) ){
+			
+			flag = true;
+			
+		}
+				
+		else{
+			
+			cout << "\n\tValor invalido, intente de nuevo: ";
+			cin.clear();
+			cin.ignore(200, '\n');
+				
+		}
+	}
 	
 	guardar<<"\n"<<nombre<<" "<<apellido<<" "<<cedula<<" "<< carrera<<" "<<indice<<" "<<nivel<<" "<<numero_credito;
 	guardar.close();
@@ -147,6 +207,8 @@ void Inscripcion::ingresarEstudiantes(){
 	cout << "\tPuede registrar un maximo de 10 materias.\n";
 	cout <<	"\t(-1 para terminar)\n";
 	
+	Curso *aux;
+	
 	
 	for ( int i = 0 ; i < MAX_MATERIAS ; i++ ){
 		
@@ -161,7 +223,22 @@ void Inscripcion::ingresarEstudiantes(){
 		
 		else{
 			
-			materias[i] = temp;
+			aux = cursos->buscar( temp );
+			
+			if ( aux ){
+				
+				materias[i] = temp;
+				
+			}
+			
+			else{
+				
+				cout <<	"\tEl ID ingresado no corresponde a ninguna materia\n\tIntentelo nuevamente\n";
+				cin.clear();
+				cin.ignore(200, '\n');
+				i--;
+				
+			}
 			
 		}
 		
@@ -375,6 +452,7 @@ void Inscripcion::imprimirDetalleCurso( int id ){
 void Inscripcion::imprimirMateriasEstudiante( int cedula ){
 	
 	Estudiante *temp = estudiantes->buscar(cedula);
+	Curso *aux;
 	int materias[MAX_MATERIAS];
 	
 	if ( temp ){	
@@ -387,13 +465,21 @@ void Inscripcion::imprimirMateriasEstudiante( int cedula ){
 		
 			if ( materias[i] != 0 ){
 				
-				cout << "\t\t" << nombreCurso( materias[i] ) << "\n\n";
+				aux = cursos->buscar( materias[i] );
 				
-				temp->mostrarDetalleMateria( materias[i] );
+				if ( aux ){
+					
+					cout << "\t\t" << nombreCurso( materias[i] ) << "\n\n";
 				
-				cout << "\n\n";
+					temp->mostrarDetalleMateria( materias[i] );
 				
-				cout << "\t--------------------------------------------" << " \n\n";
+					cout << "\n\n";
+				
+					cout << "\t--------------------------------------------" << " \n\n";
+					
+				}
+				
+				
 			
 			}
 		
