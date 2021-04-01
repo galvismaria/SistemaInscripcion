@@ -699,5 +699,8 @@ void Inscripcion::salir(){
 }
 
 Inscripcion::~Inscripcion(){
-	;
+	
+	delete estudiantes;
+	delete cursos;
+	
 }

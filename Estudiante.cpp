@@ -262,6 +262,12 @@ void Estudiante::mostrarDetalleMateria( int id ){
 
 Estudiante::~Estudiante(){
 	
-	;
+	delete &nombre;
+	delete &carrera;
+	delete &cedula;
+	delete &indice;
+	delete &nivel;
+	delete &creditos;
+	delete [] materias;
 	
 }

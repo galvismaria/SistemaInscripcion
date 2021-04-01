@@ -259,5 +259,13 @@ void Curso::crearLista(Cola *cola){
 }
 
 Curso::~Curso(){
-	;
+	
+	delete &nombre;
+	delete &id;
+	delete &cupos;
+	delete &prioridad;
+	delete [] listaAsignados;
+	delete [] listaEspera;
+	delete [] candidatos;
+	
 }

@@ -8,5 +8,9 @@ Informatica-industrial             07       3   2
 Innovacion-y-desarrollo            08       3   2
 Ingenieria-del-software            09       3   3
 Lenguaje-de-compiladores           10       3   2
-Investigacion-de-operaciones 11 4 2
-Matematica-III 60 5 1
+Investigacion-de-operaciones 	   11       4   2
+Matematica-III                     12       5   1
+Tecnicas-de-programacion-III       13       4   3
+Finanzas-para-ingenieros           14       3   2
+Calculo-numerico                   15       5   1
+Informatica-industrial             16       2   3
