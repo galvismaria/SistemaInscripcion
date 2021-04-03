@@ -42,17 +42,16 @@ void Inscripcion::cargarEstudiantes(){
     if ( archivo.is_open() ){
     	
 		string nombre;
-		string apellido;
 		string carrera;
-		int cedula, indice, nivel, creditos;
+		string indiceAux;
+		int cedula, nivel, creditos;
+		float indice;
 		
         while ( !archivo.eof() ){
         	
-            archivo >> nombre >> apellido >> cedula >> carrera >> indice >> nivel >> creditos;
-            
-            string nombreCompleto = nombre + " " + apellido;
+            archivo >> cedula >> nombre >> carrera >> indice >> nivel >> creditos;
 				
-			estudiantes->insertar( new Estudiante ( nombreCompleto, carrera, cedula, indice, nivel, creditos ) );
+			estudiantes->insertar( new Estudiante ( nombre, carrera, cedula, indice, nivel, creditos ) );
 			
         }
         
@@ -76,7 +75,7 @@ void Inscripcion::cargarInscripciones(){
 		
         while ( !archivo.eof() ){
         	
-            archivo >> cedula >> materias[0] >> materias[1] >> materias[2] >> materias[3] >> materias[4] >> materias[5] >> materias[6] >> materias[7] >> materias[8] >> materias[9];
+            archivo >> cedula >> materias[0] >> materias[1] >> materias[2] >> materias[3];
             
             cargarMateriasEstudiante(cedula, materias, MAX_MATERIAS);  
 
@@ -100,18 +99,15 @@ void Inscripcion::ingresarEstudiantes(){
 
 	int cedula, indice, numero_credito, nivel;
 	string nombre;
-	string apellido;
 	string carrera;
 	int materias[MAX_MATERIAS];
 	int temp;
 	bool flag = false;
 	int opcion;
 	
-   	cout<<"\tPrimer nombre: ";
-	cin >>nombre;
-	
-	cout<<"\tPrimer apellido: ";
-	cin >>apellido;
+	cout<<"\t(reemplazar espacios por '-')\n";
+   	cout<<"\tNombre: ";
+   	cin >>nombre;
 	
 	cout<<"\tCedula: ";
 	cin >>cedula;
@@ -187,7 +183,7 @@ void Inscripcion::ingresarEstudiantes(){
 		}
 	}
 	
-	guardar<<"\n"<<nombre<<" "<<apellido<<" "<<cedula<<" "<< carrera<<" "<<indice<<" "<<nivel<<" "<<numero_credito;
+	guardar<<"\n"<<cedula<<" "<<nombre<<" "<< carrera<<" "<<indice<<" "<<nivel<<" "<<numero_credito;
 	guardar.close();
 	
 	system("cls");
@@ -244,7 +240,7 @@ void Inscripcion::ingresarEstudiantes(){
 		
 	}
 
-	guardar << "\n" << cedula << " " << materias[0] << " " << materias[1] << " " << materias[2] << " " << materias[3] << " " << materias[4] << " " << materias[5] << " " << materias[6] << " " << materias[7] << " " << materias[8] << " " << materias[9];
+	guardar << "\n" << cedula << " " << materias[0] << " " << materias[1] << " " << materias[2] << " " << materias[3];
 	
 	guardar.close();
 	

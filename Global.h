@@ -3,4 +3,4 @@
 #include <fstream>
 #include <algorithm>
 
-#define MAX_MATERIAS 10
+#define MAX_MATERIAS 4

@@ -128,7 +128,11 @@ void Estudiante::setMaterias( Estudiante *estudiante ){
 
 string Estudiante::getNombre(){
 	
-	return nombre;
+	string tempNombre = this->nombre;
+	
+	replace( tempNombre.begin(), tempNombre.end(), '-', ' ');
+	
+	return tempNombre;
 	
 }
 
@@ -229,7 +233,7 @@ bool Estudiante::tienePrioridad( Estudiante *estudiante, int caso ){
 
 void Estudiante::mostrarInfo(){
 	
-	cout << "\tNombre:\t" << this->nombre << " \n";
+	cout << "\tNombre:\t" << this->getNombre() << " \n";
 	cout << "\tCedula:\t" << this->cedula << " \n";
 	cout << "\tCarrera: " << this->getCarrera() << " \n";
 	cout << "\tIndice:\t" << this->indice << " \n";

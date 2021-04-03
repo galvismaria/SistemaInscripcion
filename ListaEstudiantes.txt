@@ -1,14 +1,30 @@
-Maria    Elena      25654152  Ingenieria-Informatica        3        1       24
-Roberto  Perez      26541287  Ingenieria-Informatica        5        2       14
-Cristina Roca       24512687  Ingenieria-Informatica        4        9       10
-Eduardo  Yagn       25451523  Ingenieria-Informatica        5        7       26
-Vannesa  Moreno     27845266  Ingenieria-Informatica        6        8       12
-Oliver   Messi      25124562  Ingenieria-Informatica        5        4       24
-Emily    Rodriguez  24851522  Ingenieria-Informatica        8        3       20
-Camilo   Cstilla    23598421  Ingenieria-Informatica        9        1       14
-Anton    Ego        28569351  Ingenieria-Informatica        1        4       22
-Veronica Lopez 	    27845126  Ingenieria-Informatica        9        1       14
-Maria Galvis 26753655 Ingenieria-Informatica 8 3 35
-Roxana Salazar 25346332 Ingenieria-Informatica 8 3 37
-Jose Lopez 28953654 Ingenieria-Informatica 8 4 39
-Luna Blanco 18596325 Ingenieria-Informatica 7 4 26
+101 Estudiante-01 Informatica 8.01 4 16
+102 Estudiante-02 Informatica 8.02 5 6
+103 Estudiante-03 Informatica 8.03 6 12
+104 Estudiante-04 Informatica 8.04 8 20
+105 Estudiante-05 Informatica 8.05 6 26
+106 Estudiante-06 Informatica 8.06 5 36
+107 Estudiante-07 Informatica 8.07 5 46
+108 Estudiante-08 Informatica 8.08 5 16
+109 Estudiante-09 Informatica 8.09 3 40
+110 Estudiante-10 Industrial  8.50 3 12
+111 Estudiante-11 Informatica 8.01 6 16
+112 Estudiante-12 Informatica 8.01 6 30
+113 Estudiante-13 Informatica 8.12 5 20
+114 Estudiante-14 Informatica 8.15 8 28
+115 Estudiante-15 Informatica 8.01 8 18
+116 Estudiante-16 Informatica 8.01 8 16
+117 Estudiante-17 Informatica 8.16 3 20
+118 Estudiante-18 Industrial  8.01 4 22
+119 Estudiante-19 Informatica 8.01 7 30
+120 Estudiante-20 Informatica 8.70 6 38
+121 Estudiante-21 Informatica 8.01 4 23
+122 Estudiante-22 Informatica 8.01 6 17
+123 Estudiante-23 Informatica 8.01 3 16
+124 Estudiante-24 Informatica 8.01 4 18
+125 Estudiante-25 Informatica 8.01 5 20
+126 Estudiante-26 Industrial  8.01 4 26
+127 Estudiante-27 Informatica 8.01 8 34
+128 Estudiante-28 Informatica 8.01 7 28
+129 Estudiante-29 Informatica 8.01 5 16
+130 Estudiante-30 Informatica 9.90 4 16

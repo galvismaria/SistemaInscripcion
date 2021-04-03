@@ -36,11 +36,21 @@ class Inscripcion{
 		void cargarCursos();													// Lee un archivo de texto con la informacion referente a los cursos
 																				// y los añade a la lista de cursos ofertados
 																				
+		/* El formato del archivo de cursos es el siguiente: */
+		/* Nombre-de-la-Materia   ID		Cupos	Prioridad   */
+																				
 		void cargarEstudiantes();												// Lee un archivo de texto con la informacion referente a los estudiantes
 																				// y los añade a la lista de estudiantes que participaron en las inscripciones
+		
+		/* El formato del archivo de estudiantes es el siguiente: */
+		/* Cedula	Nombre-del-Estudiante	Nombre-de-la-Carrera	Indice	Nivel	Creditos  */
 																				
 		void cargarInscripciones();												// Lee un archivo de texto con la informacion de las materias que cada estudiante quiere inscribir
 																				// y actualiza el listado de estudiantes añadiendo estas materias 
+		
+		/* El formato del archivo de inscripciones es el siguiente: */
+		/* Cedula	ID1		ID2		ID3		ID4	*/
+		/* En caso de lugares en blanco, se debe colocar 0 como ID*/
 																				
 		void cargarMateriasEstudiante(int cedula, int materias[], int n);		// Funcion que recorre la lista de estudiantes y añade las materias que 
 																				// cada estudiante quiere inscribir
