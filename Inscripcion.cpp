@@ -373,25 +373,27 @@ void Inscripcion::interseccionEstudiantes(){
 	
 	while ( cursos->hayActual() ){
 		
-		Cola *colaTemp = new Cola();
-		cursos->valorActual()->crearLista ( colaTemp );
+		Lista<Estudiante> *lista = new Lista<Estudiante>();
+		cursos->valorActual()->crearLista ( lista );
+		lista->primero();
 		
-		while ( !colaTemp->estaVacia() ){
+		while ( lista->hayActual() ){
 			
 			estudiantes->primero();
-			Estudiante *temp = colaTemp->desencolar();
 			
 			while ( estudiantes->hayActual() ){
 				
-				if ( temp->getCedula() == estudiantes->valorActual()->getCedula() ){
+				if ( lista->valorActual()->getCedula() == estudiantes->valorActual()->getCedula() ){
 					
-					estudiantes->valorActual()->setMaterias( temp );
+					estudiantes->valorActual()->setMaterias( lista->valorActual() );
 				
 				}
 					
 				estudiantes->siguiente();
 				
 		 	}
+		 	
+		 	lista->siguiente();
 		 	
 		}
 		
@@ -499,7 +501,7 @@ void Inscripcion::procesoInscripcion(){
 	asignarCandidatos();
 	inscribirEstudiantes();
 	interseccionEstudiantes();
-	
+
 }
 
 
@@ -621,8 +623,8 @@ void Inscripcion::contarSinCupo(){
 	
 	while ( cursos->hayActual() ){
 		
-		cout << "\t" << nombreCurso( cursos->valorActual()->getID() );
-		cout << "\t\t( " << cursos->valorActual()->getEstudiantesSinCupo() << " )\n";
+		cout << "\t( " << cursos->valorActual()->getEstudiantesSinCupo()<< " )";
+		cout << "\t" << nombreCurso( cursos->valorActual()->getID() ) << "\n";
 		n = n + cursos->valorActual()->getEstudiantesSinCupo();
 		
 		cursos->siguiente();

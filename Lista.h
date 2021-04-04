@@ -24,6 +24,7 @@ class Lista{
     		
     		public:
     			
+    			int posicion;			// Lugar que ocupa el nodo en la lista
     			T *info;				// Dato que se almacena en la lista
     			Nodo *siguiente;		// Apuntador al siguiente elemento
     		
@@ -31,6 +32,7 @@ class Lista{
     	
         Nodo* principio;				// Nodo que apunta al principio de la lista
         Nodo* actual;					// Nodo que se mueve por la lista
+        int elementos;					// Cantidad de elementos que hay en la lista
 
     public:
     	
@@ -46,6 +48,10 @@ class Lista{
         
         T* valorActual();				// Retorna el elemento almacenado en el nodo actual de la lista
         
+        int cantElementos();			// Devuelve la cantidad de elementos guardados en la lista
+		
+		int posicionActual();			// Devuelve la posicion que ocupa el nodo actual
+        
         bool listaVacia();				// Retorna 'true' si la lista está vacía, y 'false' en caso contrario
         
         bool haySiguiente();			// Retorna 'true' si el siguiente nodo es válido, y 'false' en caso contrario
@@ -60,9 +66,13 @@ class Lista{
         
 		void imprimir();				// Imprime la información guardada en el nodo
 		
+		void imprimirConPosiciones(); 	// Imprime la información guardada en el nodo y adicionalmente muestra el lugar que ocupa en la lista
+		
 		T* buscar(int info);       		// Busca un nodo según el dato que se pase como parámetro
 										// Si se trata de una lista de estudiantes recibe una cédula como parámetro,
 										// y si se trata de una lista de cursos recibe un ID de materia como parámetro
+										
+		void asignarPosiciones();		// Recorre la lista y asigna a cada nodo la posición que ocupa en la lista
         
         /* ----- Destructor ----- */
         

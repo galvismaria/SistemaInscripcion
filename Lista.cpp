@@ -4,6 +4,7 @@ template <typename T>
 Lista<T>::Lista(){
 	
     principio = actual = NULL;
+    elementos = 0;
     
 }
 
@@ -31,6 +32,8 @@ void Lista<T>::insertar( T *info ){
         principio = new Nodo();
         principio->siguiente = NULL;
         principio->info = info;
+        elementos++;
+        principio->posicion = elementos;
         
     } else{
     	
@@ -38,6 +41,8 @@ void Lista<T>::insertar( T *info ){
         actual->siguiente = new Nodo();
         actual->siguiente = actual->siguiente;
         actual->siguiente->info = info;
+        elementos++;
+        actual->siguiente->posicion = elementos;
         
     }
 	
@@ -91,6 +96,20 @@ T* Lista<T>::valorActual(){
 }
 
 template <typename T>
+int Lista<T>::cantElementos(){
+	
+    return elementos;
+    
+}
+
+template <typename T>
+int Lista<T>::posicionActual(){
+	
+    return actual->posicion;
+    
+}
+
+template <typename T>
 void Lista<T>::imprimir(){
 	
 	Nodo* aux = principio;
@@ -98,6 +117,21 @@ void Lista<T>::imprimir(){
 	while ( aux ){
 		
 		aux->info->mostrarInfo();
+		aux = aux->siguiente;
+	}
+	
+}
+
+template <typename T>
+void Lista<T>::imprimirConPosiciones(){
+	
+	Nodo* aux = principio;
+	
+	while ( aux ){
+		
+		cout << "\t#" << aux->posicion << "\n";
+		aux->info->mostrarInfo();
+		cout << "\n";
 		aux = aux->siguiente;
 	}
 	
@@ -120,6 +154,22 @@ T* Lista<T>::buscar( int info ){
 	}
 	
 	return NULL;
+	
+}
+
+template <typename T>
+void Lista<T>::asignarPosiciones(){
+	
+	Nodo *aux = principio;
+	int n = 1;
+	
+	while ( aux ){
+		
+		aux->posicion = n;
+		aux = aux->siguiente;
+		n++;
+		
+	}
 	
 }
 

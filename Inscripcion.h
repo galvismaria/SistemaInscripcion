@@ -93,7 +93,7 @@ class Inscripcion{
 																				
 		void contarSinCupo();													// Muestra los estudiantes sin cupo para cada materia y global
 		
-		void registrarDatos();
+		void registrarDatos(); 													// Muestra las opciones para ingresar datos en el sistema
 		
 		void menuPrincipal();													// Muestra el menu principal del programa
 		

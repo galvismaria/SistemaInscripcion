@@ -130,6 +130,7 @@ void Cola::asignarPosiciones(){
 	
 }
 
+
 void Cola::imprimir(){
 	
 	if ( !estaVacia() ){

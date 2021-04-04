@@ -6,8 +6,8 @@ Curso::Curso(){
 	id = 0;
 	cupos = 0;
 	prioridad = 0;
-	listaAsignados = new Cola();
-	listaEspera = new Cola();
+	listaAsignados = new Lista<Estudiante>();
+	listaEspera = new Lista<Estudiante>();
 	candidatos = new Cola();
 	
 }
@@ -18,8 +18,8 @@ Curso::Curso(string nombre, int id, int cupos, int prioridad){
 	this->id = id;
 	this->cupos = cupos;
 	this->prioridad = prioridad;
-	listaAsignados = new Cola();
-	listaEspera = new Cola();
+	listaAsignados = new Lista<Estudiante>();
+	listaEspera = new Lista<Estudiante>();
 	candidatos = new Cola();
 	
 }
@@ -61,13 +61,13 @@ int Curso::getInfo(){
 
 int Curso::getEstudiantesInscritos(){
 	
-	return listaAsignados->getElementos();
+	return listaAsignados->cantElementos();
 	
 }
 
 int Curso::getEstudiantesSinCupo(){
 	
-	return listaEspera->getElementos();
+	return listaEspera->cantElementos();
 	
 }
 
@@ -77,16 +77,16 @@ void Curso::generarListaAsignados(){
 		
 		candidatos->ordenarPrioridad( prioridad );
 	
-		while ( listaAsignados->getElementos() < this->cupos && !candidatos->estaVacia()  ){
+		while ( listaAsignados->cantElementos() < this->cupos && !candidatos->estaVacia()  ){
 		
-			listaAsignados->encolar ( candidatos->desencolar() );
+			listaAsignados->insertar ( candidatos->desencolar() );
 			listaAsignados->asignarPosiciones();
 		
 		}
 		
 		while ( !candidatos->estaVacia() ){
 		
-			listaEspera->encolar ( candidatos->desencolar() );
+			listaEspera->insertar ( candidatos->desencolar() );
 			listaEspera->asignarPosiciones();
 		
 		}
@@ -99,29 +99,27 @@ void Curso::generarListaAsignados(){
 
 void Curso::asignarMaterias(){
 	
-	if ( !listaAsignados->estaVacia() ){
+	if ( !listaAsignados->listaVacia() ){
 		
-		Nodo *recorr = listaAsignados->getInicio();
-		Estudiante *aux = new Estudiante();
+		listaAsignados->primero();
 		
-		while ( recorr ){
+		while ( listaAsignados->hayActual() ){
 			
-			recorr->getEstudiante()->setMateria ( this->id, true, recorr->getPosicion() );
-			recorr = recorr->getSiguiente();
+			listaAsignados->valorActual()->setMateria ( this->id, true, listaAsignados->posicionActual() );
+			listaAsignados->siguiente();
 			
 		}
 		
 	}
 	
-	if ( !listaEspera->estaVacia() ){
+	if ( !listaEspera->listaVacia() ){
 		
-		Nodo *recorr = listaEspera->getInicio();
-		Estudiante *aux = new Estudiante();
+		listaEspera->primero();
 		
-		while ( recorr ){
+		while ( listaEspera->hayActual() ){
 			
-			recorr->getEstudiante()->setMateria ( this->id, false, recorr->getPosicion() );
-			recorr = recorr->getSiguiente();
+			listaEspera->valorActual()->setMateria ( this->id, false, listaEspera->posicionActual() );
+			listaEspera->siguiente();
 			
 		}
 		
@@ -176,10 +174,10 @@ void Curso::mostrarDetalles(){
 
 void Curso::mostrarListaAsignados(){
 	
-	if ( !listaAsignados->estaVacia() ){
+	if ( !listaAsignados->listaVacia() ){
 		
 		cout << "\t\t\t- Asignados -" << " \n\n";
-		listaAsignados->imprimir();
+		listaAsignados->imprimirConPosiciones();
 		
 	}
 	
@@ -191,10 +189,10 @@ void Curso::mostrarListaAsignados(){
 
 void Curso::mostrarListaEspera(){
 	
-	if ( !listaEspera->estaVacia() ){
+	if ( !listaEspera->listaVacia() ){
 		
 		cout << "\t\t\t- En espera -" << " \n\n";
-		listaEspera->imprimir();
+		listaEspera->imprimirConPosiciones();
 		
 	}
 	
@@ -229,28 +227,28 @@ void Curso::mostrarResultados(){
 	
 }
 
-void Curso::crearLista(Cola *cola){
+void Curso::crearLista( Lista<Estudiante> *lista ){
 	
-	if ( !listaAsignados->estaVacia() ){
+	if ( !listaAsignados->listaVacia() ){
 		
-		Nodo *temp = listaAsignados->getInicio();
-	
-		while ( temp ){
+		listaAsignados->primero();
+		
+		while ( listaAsignados->hayActual() ){
 			
-			cola->encolar( new Estudiante( temp->getEstudiante() ) );
-			temp = temp->getSiguiente();
+			lista->insertar( new Estudiante( listaAsignados->valorActual() ) );
+			listaAsignados->siguiente();
 		}
 		
 	}
 	
-	if ( !listaEspera->estaVacia() ){
+	if ( !listaEspera->listaVacia() ){
 		
-		Nodo *temp = listaEspera->getInicio();
+		listaEspera->primero();
 		
-		while ( temp ){
+		while ( listaEspera->hayActual() ){
 			
-			cola->encolar( new Estudiante( temp->getEstudiante() ) );
-			temp = temp->getSiguiente();
+			lista->insertar( new Estudiante( listaEspera->valorActual() ) );
+			listaEspera->siguiente();
 			
 		}
 		
